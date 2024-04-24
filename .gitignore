@@ -2,12 +2,16 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+/GameDev1-2DPlatformer/[Ll]ibrary/
 /[Ll]ibrary/
+/GameDev1-2DPlatformer/[Tt]emp/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/GameDev1-2DPlatformer/[Ll]ogs/
 /[Ll]ogs/
+/GameDev1-2DPlatformer/[Uu]ser[Ss]ettings/
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
