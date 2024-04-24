@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private float movementY;*/
     private Rigidbody2D rb;
     private float horizontalInput;
-    private float speed = 5.0f;
-    private float jumpForce = 4;
+    private float speed = 2.5f;
+    private float jumpForce = 3.5f;
 
     private void Awake()
     {
