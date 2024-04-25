@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform facingCheck;
     public LayerMask groundLayer;
 
-    private float horizontal;
-    private float speed = 3f;
-    private float jumpingPower = 5.5f;
-    private bool isFacingRight = true;
+    private float _horizontal;
+    private float _speed = 3f;
+    private float _jumpingPower = 5.5f;
+    private bool _isFacingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +24,27 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        CheckFacingDirection();
+    }
+    
+    void FixedUpdate()
+    {
+        //Movement is handled in FixedUpdate because we are using physics
+        HandleMovement();
+    }
+    
+    private void HandleMovement()
+    {
         if(!IsFacingWall() || IsGrounded())
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.velocity = new Vector2(_horizontal * _speed, rb.velocity.y);
         }
-        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
-        if(!isFacingRight && horizontal > 0f)
-        {
-            Flip();
-        }
-        else if(isFacingRight && horizontal < 0f)
+    }
+    
+    private void CheckFacingDirection()
+    {
+        if(!_isFacingRight && _horizontal > 0f || _isFacingRight && _horizontal < 0f)
         {
             Flip();
         }
@@ -44,7 +54,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.performed && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            //JUST TESTING DIFFERENT WAYS TO JUMP, BOTH ARE SIMILAR, IF THERE'S EVEN A DIFFERENCE
+            // Clear any existing vertical velocity and apply an impulse upwards
+            rb.velocity = new Vector2(rb.velocity.x, 0); // This line ensures the jump force is consistent
+            rb.AddForce(new Vector2(0, _jumpingPower), ForceMode2D.Impulse);
+            
+            
+            //rb.velocity = new Vector2(rb.velocity.x, _jumpingPower);
         }
 
         if(context.canceled && rb.velocity.y > 0f)
@@ -55,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
+        
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
@@ -65,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        isFacingRight = !isFacingRight;
+        _isFacingRight = !_isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
@@ -73,6 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontal = context.ReadValue<Vector2>().x;
+        _horizontal = context.ReadValue<Vector2>().x;
     }
 }
