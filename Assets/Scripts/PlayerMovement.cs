@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     private float _horizontal;
-    private float _speed = 3f;
-    private float _jumpingPower = 5.5f;
+    public float _speed = 3f;
+    public float _jumpingPower = 5.5f;
     private bool _isFacingRight = true;
 
     // Start is called before the first frame update
