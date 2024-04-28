@@ -762,8 +762,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &266709153
-BoxCollider2D:
+--- !u!60 &266709153
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -794,7 +794,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00015904754, y: -0.035872295}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -804,9 +804,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.22011279, y: 0.23199177}
-  m_EdgeRadius: 0.05
+  m_Points:
+    m_Paths:
+    - - {x: -0.05603106, y: 0.0807097}
+      - {x: -0.11070955, y: 0.027450401}
+      - {x: -0.110044524, y: -0.08281634}
+      - {x: -0.06609792, y: -0.16}
+      - {x: 0.06611995, y: -0.16}
+      - {x: 0.112705104, y: -0.08745048}
+      - {x: 0.11270527, y: 0.04270528}
+      - {x: 0.082062274, y: 0.08070962}
+  m_UseDelaunayMesh: 0
 --- !u!1 &281600257
 GameObject:
   m_ObjectHideFlags: 0
