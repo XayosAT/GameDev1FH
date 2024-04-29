@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public float _speed = 3f;
     public float _jumpingPower = 5.5f;
     private bool _isFacingRight = true;
+    public Vector2 boxSize;
+    public float castDistance;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +84,22 @@ public class PlayerMovement : MonoBehaviour
     {
         
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        
+        //THIS IS ANOTHER WAY TO CHECK IF THE PLAYER IS GROUNDED, USING A BOXCAST
+        // if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        // {
+        //     return true;
+        // }
+        // return false;
+        
     }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
+    }
+    
 
     private bool IsFacingWall()
     {
