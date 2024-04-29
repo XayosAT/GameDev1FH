@@ -741,6 +741,8 @@ MonoBehaviour:
     m_Bits: 64
   _speed: 5
   _jumpingPower: 8
+  boxSize: {x: 0.8, y: 0.1}
+  castDistance: 1
 --- !u!95 &266709152
 Animator:
   serializedVersion: 5
