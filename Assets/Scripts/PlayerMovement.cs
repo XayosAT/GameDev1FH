@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private PlayerStats playerStats;
+    private Animator playerAnim;
     public Transform groundCheck;
     public Transform facingCheck;
     public LayerMask groundLayer;
@@ -19,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,13 +58,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.performed && IsGrounded())
         {
+            playerAnim.SetTrigger("Jump_trig");
+
             //JUST TESTING DIFFERENT WAYS TO JUMP, BOTH ARE SIMILAR, IF THERE'S EVEN A DIFFERENCE
             // Clear any existing vertical velocity and apply an impulse upwards
             rb.velocity = new Vector2(rb.velocity.x, 0); // This line ensures the jump force is consistent
             rb.AddForce(new Vector2(0, _jumpingPower), ForceMode2D.Impulse);
-            
-            
+
+
             //rb.velocity = new Vector2(rb.velocity.x, _jumpingPower);
+
+            playerStats.AddJumped();
         }
 
         if(context.canceled && rb.velocity.y > 0f)
