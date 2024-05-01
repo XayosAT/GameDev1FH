@@ -24,7 +24,7 @@ public class CoinBehaviour : MonoBehaviour
         {
             _audioSource.Play();
             other.GetComponent<PlayerStats>().CoinCollected(2);
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

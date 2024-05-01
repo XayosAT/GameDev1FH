@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public GameObject Win;
+
     private int collectedCoinPoints = 0;
     private int totalCoins = 0;
     private int totalJumped = 0;
@@ -26,6 +28,11 @@ public class PlayerStats : MonoBehaviour
         collectedCoinPoints += coinvalue;
         Debug.Log("Total Coins: " + totalCoins);
         Debug.Log("Coin Points: " + collectedCoinPoints);
+
+        if(totalCoins >= 5)
+        {
+            Win.SetActive(true);
+        }
     }
 
     public void AddJumped()

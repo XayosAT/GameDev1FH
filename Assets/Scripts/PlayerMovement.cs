@@ -83,14 +83,14 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        //return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
         
         //THIS IS ANOTHER WAY TO CHECK IF THE PLAYER IS GROUNDED, USING A BOXCAST
-        // if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
-        // {
-        //     return true;
-        // }
-        // return false;
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        {
+            return true;
+        }
+        return false;
         
     }
     
