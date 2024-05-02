@@ -23,6 +23,7 @@ public class CoinBehaviour : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             _audioSource.Play();
+            GameManager.Instance.AddCoinToTeamScore(other.GetComponent<PlayerMovement>().teamColor);
             other.GetComponent<PlayerStats>().CoinCollected(2);
             Destroy(gameObject, 0.1f);
         }

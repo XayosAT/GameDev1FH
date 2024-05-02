@@ -2,30 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private PlayerStats playerStats;
-    private Animator playerAnim;
+    private Rigidbody2D _rb;
+    private PlayerStats _playerStats;
+    private Animator _playerAnim;
     public Transform groundCheck;
     public Transform facingCheck;
     public LayerMask groundLayer;
 
     private float _horizontal;
-    public float _speed = 3f;
-    public float _jumpingPower = 5.5f;
+    [FormerlySerializedAs("_speed")] public float speed = 3f;
+    [FormerlySerializedAs("_jumpingPower")] public float jumpingPower = 5.5f;
     private bool _isFacingRight = true;
     public Vector2 boxSize;
     public float castDistance;
+    
+    public TeamColor teamColor;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        playerStats = GetComponent<PlayerStats>();
-        playerAnim = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+        _playerStats = GetComponent<PlayerStats>();
+        _playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!IsFacingWall() || IsGrounded())
         {
-            rb.velocity = new Vector2(_horizontal * _speed, rb.velocity.y);
+            _rb.velocity = new Vector2(_horizontal * speed, _rb.velocity.y);
         }
     }
     
@@ -61,22 +64,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.performed && IsGrounded())
         {
-            playerAnim.SetTrigger("Jump_trig");
+            _playerAnim.SetTrigger("Jump_trig");
 
             //JUST TESTING DIFFERENT WAYS TO JUMP, BOTH ARE SIMILAR, IF THERE'S EVEN A DIFFERENCE
             // Clear any existing vertical velocity and apply an impulse upwards
-            rb.velocity = new Vector2(rb.velocity.x, 0); // This line ensures the jump force is consistent
-            rb.AddForce(new Vector2(0, _jumpingPower), ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(_rb.velocity.x, 0); // This line ensures the jump force is consistent
+            _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
 
 
             //rb.velocity = new Vector2(rb.velocity.x, _jumpingPower);
 
-            playerStats.AddJumped();
+            _playerStats.AddJumped();
         }
 
-        if(context.canceled && rb.velocity.y > 0f)
+        if(context.canceled && _rb.velocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
     }
 

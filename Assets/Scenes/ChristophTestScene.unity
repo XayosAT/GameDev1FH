@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 165063439}
   - component: {fileID: 165063442}
   - component: {fileID: 165063444}
+  - component: {fileID: 165063445}
   m_Layer: 0
   m_Name: P1 Cam
   m_TagString: MainCamera
@@ -383,6 +384,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &165063445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165063438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83d8baf427ead94399ac3883d5adcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: b8d0499c5b53fc544bb77e8bb690d26e, type: 2}
 --- !u!1 &281600257
 GameObject:
   m_ObjectHideFlags: 0
@@ -18832,6 +18846,7 @@ GameObject:
   - component: {fileID: 396730344}
   - component: {fileID: 396730342}
   - component: {fileID: 396730341}
+  - component: {fileID: 396730346}
   m_Layer: 0
   m_Name: P4 Cam
   m_TagString: MainCamera
@@ -18983,6 +18998,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464555771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &396730346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396730340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83d8baf427ead94399ac3883d5adcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: c3122b62220fd5b43adfc9d04cd2880d, type: 2}
 --- !u!1 &406351446
 GameObject:
   m_ObjectHideFlags: 0
@@ -19221,6 +19249,7 @@ GameObject:
   - component: {fileID: 753228003}
   - component: {fileID: 753228001}
   - component: {fileID: 753228000}
+  - component: {fileID: 753228005}
   m_Layer: 0
   m_Name: P2 Cam
   m_TagString: MainCamera
@@ -19372,6 +19401,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464555771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753228005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753227999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83d8baf427ead94399ac3883d5adcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: c3122b62220fd5b43adfc9d04cd2880d, type: 2}
 --- !u!1 &788778665
 GameObject:
   m_ObjectHideFlags: 0
@@ -19563,6 +19605,7 @@ GameObject:
   - component: {fileID: 1237764992}
   - component: {fileID: 1237764990}
   - component: {fileID: 1237764989}
+  - component: {fileID: 1237764994}
   m_Layer: 0
   m_Name: P3 Cam
   m_TagString: MainCamera
@@ -19714,6 +19757,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464555771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237764994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237764988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83d8baf427ead94399ac3883d5adcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: b8d0499c5b53fc544bb77e8bb690d26e, type: 2}
 --- !u!1 &1423140534
 GameObject:
   m_ObjectHideFlags: 0
@@ -20289,6 +20345,7 @@ GameObject:
   - component: {fileID: 2117284108}
   - component: {fileID: 2117284114}
   - component: {fileID: 2117284115}
+  - component: {fileID: 2117284116}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -20677,6 +20734,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19570191, y: 0.2357308}
   m_EdgeRadius: 0
+--- !u!114 &2117284116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117284106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f51b8fe974bba4dbd8c4c2de832188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Win: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
