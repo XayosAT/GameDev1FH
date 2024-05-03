@@ -5,6 +5,7 @@ public class CoinBehaviour : MonoBehaviour
 {
     private AudioSource _audioSource;
     public int coinValue;
+    private bool _iscollected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,12 @@ public class CoinBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && !_iscollected)
         {
+            _iscollected = true;
             _audioSource.Play();
             GameManager.Instance.AddCoinToTeamScore(other.GetComponent<PlayerMovement>().teamColor);
-            other.GetComponent<PlayerStats>().CoinCollected(2);
+            other.GetComponent<PlayerStats>().CoinCollected(coinValue);
             Destroy(gameObject, 0.1f);
         }
     }

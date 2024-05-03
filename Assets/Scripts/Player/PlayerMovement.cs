@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -14,14 +15,12 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     private float _horizontal;
-    [FormerlySerializedAs("_speed")] public float speed = 3f;
-    [FormerlySerializedAs("_jumpingPower")] public float jumpingPower = 5.5f;
+    public float speed = 8f;
+    public float jumpingPower = 12f;
     private bool _isFacingRight = true;
-    public Vector2 boxSize;
+    public Vector2 boxSizeJump;
     public float castDistance;
-    
     public TeamColor teamColor;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         CheckFacingDirection();
     }
     
@@ -66,13 +64,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _playerAnim.SetTrigger("Jump_trig");
 
-            //JUST TESTING DIFFERENT WAYS TO JUMP, BOTH ARE SIMILAR, IF THERE'S EVEN A DIFFERENCE
             // Clear any existing vertical velocity and apply an impulse upwards
             _rb.velocity = new Vector2(_rb.velocity.x, 0); // This line ensures the jump force is consistent
             _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
-
-
-            //rb.velocity = new Vector2(rb.velocity.x, _jumpingPower);
 
             _playerStats.AddJumped();
         }
@@ -85,11 +79,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        
         //return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
         
         //THIS IS ANOTHER WAY TO CHECK IF THE PLAYER IS GROUNDED, USING A BOXCAST
-        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        if (Physics2D.BoxCast(transform.position, boxSizeJump, 0, -transform.up, castDistance, groundLayer))
         {
             return true;
         }
@@ -100,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
+        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSizeJump);
     }
     
 

@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeMovement : MonoBehaviour
+public class SlimeController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
     private Vector3 startPos;
     public bool startDirRight = true;
     public float speed = 2f;
-    public float distance = 2f;
+    public float distance = 5f;
     private float _horizontal;
+    public GameObject coin;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +19,10 @@ public class SlimeMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
 
-        if(startDirRight)
+        if (startDirRight)
         {
             _horizontal = 1;
+            Flip();
         }
         else
         {
@@ -42,7 +44,7 @@ public class SlimeMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        rb.velocity = new Vector2(_horizontal * speed, rb.velocity.y); 
+        rb.velocity = new Vector2(_horizontal * speed, rb.velocity.y);
     }
 
     private void Turn()
@@ -65,5 +67,14 @@ public class SlimeMovement : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
+    }
+
+    public void PlayerKill(bool spawnCoin)
+    {
+        if (spawnCoin)
+        {
+            Instantiate(coin, gameObject.transform.position, coin.transform.rotation);
+        }
+        Destroy(gameObject);
     }
 }

@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     // Static variable that holds the instance
     private static GameManager _instance;
     private Dictionary<TeamColor, int> _teamScores = new Dictionary<TeamColor, int>();
-    
+
+    public GameObject win;
 
     // Property to access the instance
     public static GameManager Instance
@@ -46,7 +47,12 @@ public class GameManager : MonoBehaviour
     {
         InitTeamScores();
     }
-    
+
+    private void Update()
+    {
+        WinCheck();
+    }
+
     private void InitTeamScores()
     {
         _teamScores.Add(TeamColor.Red, 0);
@@ -60,5 +66,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Team " + teamColor + " score: " + _teamScores[teamColor]);
     }
     
+    private void WinCheck()
+    {
+        if (_teamScores[TeamColor.Red] >= 3 || _teamScores[TeamColor.Blue] >= 3)
+        {
+            win.SetActive(true);
+        }
+    }
 }
 

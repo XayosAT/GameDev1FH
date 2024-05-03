@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Slime
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - P2 Cam
   - P3 Cam
   - P4 Cam
-  - 
+  - Enemy
   - 
   - 
   - 

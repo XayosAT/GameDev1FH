@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2793838792634239451}
   - component: {fileID: 457376658453802826}
   - component: {fileID: 5535991833214084653}
-  - component: {fileID: 847959908354996934}
-  m_Layer: 0
+  - component: {fileID: -3114504223926016107}
+  m_Layer: 12
   m_Name: Enemy-Slime
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ PolygonCollider2D:
       - {x: -0.11974873, y: 0.09842718}
       - {x: -0.16555637, y: 0.015176544}
   m_UseDelaunayMesh: 0
---- !u!114 &847959908354996934
+--- !u!114 &-3114504223926016107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,9 +177,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2459710041902006973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba3ff2fe1d072b48b77c93961c0619a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7da6364a3af82ba4abda7e0a9a2dcc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDirRight: 0
+  startDirRight: 1
   speed: 2
   distance: 5
+  coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
