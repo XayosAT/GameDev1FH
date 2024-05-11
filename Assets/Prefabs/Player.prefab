@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4705184703390090712}
   - component: {fileID: 3452420027667032939}
   - component: {fileID: 1441663298827977660}
-  - component: {fileID: 1849639298440860803}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -40,6 +39,7 @@ Transform:
   m_Children:
   - {fileID: 5423913292016396113}
   - {fileID: 2361785153773242099}
+  - {fileID: 6459517468300122684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1011558957112571087
@@ -351,14 +351,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ea09b7722bf644089d1c8b9daa6a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimeSpawnCoin: 1
---- !u!61 &1849639298440860803
+--- !u!1 &1156227230718518362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6459517468300122684}
+  - component: {fileID: 1965699838725888016}
+  - component: {fileID: 5877257609627493084}
+  m_Layer: 0
+  m_Name: FootCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6459517468300122684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156227230718518362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6380263207717046132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1965699838725888016
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480653950940079859}
+  m_GameObject: {fileID: 1156227230718518362}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -387,16 +419,28 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.166}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 2.56, y: 1.28}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.11, y: 0.013}
   m_EdgeRadius: 0
+--- !u!114 &5877257609627493084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156227230718518362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027bb21f415e8384095a0fa899c2c283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2883049216568438063
 GameObject:
   m_ObjectHideFlags: 0

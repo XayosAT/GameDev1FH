@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Slime
+  - Coin
+  - TurtleSpike
+  - Snail
+  - Turtle
+  - Bat
+  - BlueBird
+  - Trampoline
   layers:
   - Default
   - TransparentFX
@@ -19,7 +26,7 @@ TagManager:
   - P3 Cam
   - P4 Cam
   - Enemy
-  - 
+  - Obstacle
   - 
   - 
   - 

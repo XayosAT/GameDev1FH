@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeController : MonoBehaviour
+public class EnemyHorizontalController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
@@ -10,8 +8,9 @@ public class SlimeController : MonoBehaviour
     public bool startDirRight = true;
     public float speed = 2f;
     public float distance = 5f;
-    private float _horizontal;
+    private float _horizontal = -1;
     public GameObject coin;
+    public bool SpawnCoinOnDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +20,14 @@ public class SlimeController : MonoBehaviour
 
         if (startDirRight)
         {
-            _horizontal = 1;
             Flip();
-        }
-        else
-        {
-            _horizontal = -1;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -50,28 +44,24 @@ public class SlimeController : MonoBehaviour
     private void Turn()
     {
         Vector3 moved = transform.position - startPos;
-        if (moved.x < 0 && moved.x <= -distance && _horizontal < 0)
+        if (moved.x < 0 && moved.x <= -distance && _horizontal < 0 ||
+            moved.x > 0 && moved.x >= distance && _horizontal > 0)
         {
-            _horizontal = 1;
-            Flip();
-        }
-        else if (moved.x > 0 && moved.x >= distance && _horizontal > 0)
-        {
-            _horizontal = -1;
             Flip();
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
+        _horizontal = -_horizontal;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
     }
 
-    public void PlayerKill(bool spawnCoin)
+    public void PlayerKill()
     {
-        if (spawnCoin)
+        if (SpawnCoinOnDeath)
         {
             Instantiate(coin, gameObject.transform.position, coin.transform.rotation);
         }
