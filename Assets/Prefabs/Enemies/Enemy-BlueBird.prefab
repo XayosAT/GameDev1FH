@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2261365916335745461}
   - component: {fileID: 8525255023741750621}
   - component: {fileID: 7903313562655439438}
+  - component: {fileID: 2458753020038803027}
   m_Layer: 12
   m_Name: Enemy-BlueBird
   m_TagString: BlueBird
@@ -290,4 +291,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5176dbb6500e0146b8f1ca91f6a6208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingPower: 1
+  flyingPower: 0.7
+--- !u!95 &2458753020038803027
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563813823687382029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5bf02d0d50dac94b80d3b619ec0f2e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
