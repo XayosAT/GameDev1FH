@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class PlayerFootInteraction : MonoBehaviour
 {
+    private PlayerAudioHandler _audioHandler;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        _audioHandler = GetComponentInParent<PlayerAudioHandler>();
     }
 
     // Update is called once per frame
@@ -17,6 +19,7 @@ public class PlayerFootInteraction : MonoBehaviour
     //Detection if player jumped on something
     private void OnTriggerEnter2D(Collider2D other)
     {
+        _audioHandler.PlaySound("Hit");
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //Name of Tag of Enemy as case

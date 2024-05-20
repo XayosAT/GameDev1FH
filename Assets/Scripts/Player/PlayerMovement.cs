@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private PlayerStats _playerStats;
+    private PlayerAudioHandler _audioHandler;
     private Animator _playerAnim;
     public Transform groundCheck;
     public Transform facingCheck;
@@ -21,13 +22,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSizeJump;
     public float castDistance;
     public TeamColor teamColor;
-
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerStats = GetComponent<PlayerStats>();
         _playerAnim = GetComponent<Animator>();
+        _audioHandler = GetComponent<PlayerAudioHandler>();
     }
 
     // Update is called once per frame
@@ -63,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if(context.performed && IsGrounded())
         {
             _playerAnim.SetTrigger("Jump_trig");
-
+            _audioHandler.PlaySound("Jump");
             // Clear any existing vertical velocity and apply an impulse upwards
             _rb.velocity = new Vector2(_rb.velocity.x, 0); // This line ensures the jump force is consistent
             _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
