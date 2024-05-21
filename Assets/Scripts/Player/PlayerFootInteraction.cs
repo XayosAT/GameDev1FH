@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerFootInteraction : MonoBehaviour
 {
     private PlayerAudioHandler _audioHandler;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +47,16 @@ public class PlayerFootInteraction : MonoBehaviour
                 case "BlueBird":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
+                    break;
+                case "Ghost":
+                    gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
+                    other.GetComponent<EnemyHorizontalController>().PlayerKill();
+                    break;
+                case "RockHead":
+
+                    break;
+                case "SpikeHead":
+
                     break;
             }
         }

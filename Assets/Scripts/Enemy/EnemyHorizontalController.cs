@@ -3,13 +3,13 @@ using UnityEngine;
 public class EnemyHorizontalController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public GameObject coin;
 
     private Vector3 startPos;
     public bool startDirRight = true;
     public float speed = 2f;
     public float distance = 5f;
     private float _horizontal = -1;
-    public GameObject coin;
     public bool SpawnCoinOnDeath;
 
     // Start is called before the first frame update

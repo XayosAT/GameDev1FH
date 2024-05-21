@@ -12,6 +12,9 @@ TagManager:
   - Bat
   - BlueBird
   - Trampoline
+  - RockHead
+  - SpikeHead
+  - Ghost
   layers:
   - Default
   - TransparentFX
