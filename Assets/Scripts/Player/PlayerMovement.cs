@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public float castDistance;
     public TeamColor teamColor;
     
+    private bool _damaged = false;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -49,7 +51,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!IsFacingWall() || IsGrounded())
         {
-            _rb.velocity = new Vector2(_horizontal * speed, _rb.velocity.y);
+            float movespeed = speed;
+            if (_damaged) movespeed = speed * 0.5f;
+            
+            _rb.velocity = new Vector2(_horizontal * movespeed, _rb.velocity.y);
         }
     }
     
@@ -63,14 +68,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed && IsGrounded())
+        if(context.performed && IsGrounded() && !_damaged)
         {
             _playerAnim.SetTrigger("Jump_trig");
             _audioHandler.PlaySound("Jump");
             // Clear any existing vertical velocity and apply an impulse upwards
             _rb.velocity = new Vector2(_rb.velocity.x, 0); // This line ensures the jump force is consistent
             _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
-
             _playerStats.AddJumped();
         }
 
@@ -116,5 +120,64 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.gameObject.GetComponent<PlayerMovement>().teamColor == teamColor)
+            {
+                BounceAlly(collision);
+            }
+            else
+            {
+                DamageEnemy(collision);
+            }
+        }
+    }
+    
+    private void BounceAlly(Collision2D ally)
+    {
+        Vector2 contactPoint = ally.GetContact(0).point;
+        Vector2 center = ally.collider.bounds.center;
+
+        // Check if the contact point is above the center of the other player
+        if (contactPoint.y > center.y + 0.4f)
+        {
+            // Apply bounce force
+            _rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
+        }
+    }
+    
+    private void DamageEnemy(Collision2D enemy)
+    {
+        Vector2 contactPoint = enemy.GetContact(0).point;
+        Vector2 center = enemy.collider.bounds.center;
+
+        // Check if the contact point is above the center of the other player
+        if (contactPoint.y > center.y + 0.4f)
+        {
+            // Apply bounce force
+            _rb.AddForce(new Vector2(0, 3f), ForceMode2D.Impulse);
+            enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage();
+        }
+    }
+    
+    private void TakeDamage()
+    {
+        if (_damaged) return;
+        _playerAnim.SetTrigger("Hit");
+        _damaged = true;
+        StartCoroutine(ResetToIdleAfterDelay(1f));
+        
+    }
+    
+    private IEnumerator ResetToIdleAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _damaged = false;
+        _playerAnim.SetTrigger("Idle");
+        
     }
 }
