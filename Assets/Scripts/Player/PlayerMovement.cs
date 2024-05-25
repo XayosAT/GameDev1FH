@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         _playerStats = GetComponent<PlayerStats>();
         _playerAnim = GetComponent<Animator>();
         _audioHandler = GetComponent<PlayerAudioHandler>();
+        StartCoroutine(SetHasAppeared());
     }
 
     // Update is called once per frame
@@ -55,6 +56,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //Movement is handled in FixedUpdate because we are using physics
         HandleMovement();
+    }
+    
+    private IEnumerator SetHasAppeared()
+    {
+        // Wait for the length of the appearing animation
+        yield return new WaitForSeconds(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
+        _playerAnim.SetBool("hasAppeared", true);
     }
     
     private void HandleMovement()
