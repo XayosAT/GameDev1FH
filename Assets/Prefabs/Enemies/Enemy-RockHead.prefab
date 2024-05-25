@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2349573379597386291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,7 +174,6 @@ MonoBehaviour:
   coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
   reactSpeed: 10
   returnSpeed: 4
-  distance: 5
   moveHorizontally: 0
   movePositiveDirection: 0
   startPosTolerance: 0.5

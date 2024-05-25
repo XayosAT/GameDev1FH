@@ -6,6 +6,7 @@ public class Trampoline : MonoBehaviour, IObstacle
 
     public void InteractWithObstacle(GameObject player)
     {
+        player.GetComponent<Animator>().SetTrigger("Jump_trig");
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, jumpingPower);
     }
 }
