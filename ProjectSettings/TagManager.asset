@@ -15,6 +15,7 @@ TagManager:
   - RockHead
   - SpikeHead
   - Ghost
+  - Detector
   layers:
   - Default
   - TransparentFX

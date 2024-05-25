@@ -19,7 +19,10 @@ public class PlayerFootInteraction : MonoBehaviour
     //Detection if player jumped on something
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _audioHandler.PlaySound("Hit");
+        if (other.gameObject.tag != "Detector")
+        {
+            _audioHandler.PlaySound("Hit");
+        }
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //Name of Tag of Enemy as case

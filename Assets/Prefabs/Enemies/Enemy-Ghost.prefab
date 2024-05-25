@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ece6d4ca486840a78b9ee96a2b94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
   startDirRight: 0
   speed: 0.85
-  distance: 15
-  coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
+  distance: 20
   SpawnCoinOnDeath: 0
 --- !u!1 &2045966796927553675
 GameObject:
