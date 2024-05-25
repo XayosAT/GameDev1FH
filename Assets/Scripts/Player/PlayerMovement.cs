@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     private float _horizontal;
-    [SerializeField]private float _vertical;
     public float speed = 8f;
     public float jumpingPower = 12f;
     private bool _isFacingRight = true;
@@ -25,9 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public TeamColor teamColor;
     
     private bool _damaged = false;
-    private bool _falling = false;
-    public float velocityX = 0;
-    
     
     // Start is called before the first frame update
     void Start()
@@ -41,10 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        /*if (_rb.velocity.y < 0 && !IsGrounded()) {
-            //Debug.Log("HELLO");
-            _playerAnim.SetTrigger("Fall_trig");
-        }*/
         if (IsGrounded() && _horizontal == 0) {
             _playerAnim.SetBool("IsRunning", false);
         }
@@ -87,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if(context.performed && IsGrounded() && !_damaged) {
-            _falling = true;
             _playerAnim.SetBool("IsRunning", false);
             //_playerAnim.SetTrigger("Jump_trig");
             _playerAnim.SetBool("IsJumping", true);
