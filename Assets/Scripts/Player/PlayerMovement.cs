@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     private float _horizontal;
+    [SerializeField]private float _vertical;
     public float speed = 8f;
     public float jumpingPower = 12f;
     private bool _isFacingRight = true;
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public TeamColor teamColor;
     
     private bool _damaged = false;
+    private bool _falling = false;
+    public float velocityX = 0;
     
     
     // Start is called before the first frame update
@@ -36,8 +39,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        /*if (_rb.velocity.y < 0 && !IsGrounded()) {
+            //Debug.Log("HELLO");
+            _playerAnim.SetTrigger("Fall_trig");
+        }*/
+        if (IsGrounded() && _horizontal == 0) {
+            _playerAnim.SetBool("IsRunning", false);
+        }
+        _playerAnim.SetFloat("yVelocity", _rb.velocity.y);
         CheckFacingDirection();
     }
     
@@ -68,18 +78,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed && IsGrounded() && !_damaged)
-        {
-            _playerAnim.SetTrigger("Jump_trig");
+        if(context.performed && IsGrounded() && !_damaged) {
+            _falling = true;
+            _playerAnim.SetBool("IsRunning", false);
+            //_playerAnim.SetTrigger("Jump_trig");
+            _playerAnim.SetBool("IsJumping", true);
             _audioHandler.PlaySound("Jump");
             // Clear any existing vertical velocity and apply an impulse upwards
             _rb.velocity = new Vector2(_rb.velocity.x, 0); // This line ensures the jump force is consistent
             _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
             _playerStats.AddJumped();
         }
-
-        if(context.canceled && _rb.velocity.y > 0f)
-        {
+        
+        if(context.canceled && _rb.velocity.y > 0f) {
+            //_playerAnim.SetBool("IsRunning", false);
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
     }
@@ -91,8 +103,11 @@ public class PlayerMovement : MonoBehaviour
         //THIS IS ANOTHER WAY TO CHECK IF THE PLAYER IS GROUNDED, USING A BOXCAST
         if (Physics2D.BoxCast(transform.position, boxSizeJump, 0, -transform.up, castDistance, groundLayer))
         {
+            _playerAnim.SetBool("IsRunning", true);
+            _playerAnim.SetBool("IsJumping", false);
             return true;
         }
+        _playerAnim.SetBool("IsJumping", true);
         return false;
         
     }
@@ -120,6 +135,9 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
+        if (IsGrounded() && _horizontal != 0) {
+            _playerAnim.SetBool("IsRunning", true);
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
