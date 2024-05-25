@@ -1,20 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerFootInteraction : MonoBehaviour
 {
     private PlayerAudioHandler _audioHandler;
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()
     {
         _audioHandler = GetComponentInParent<PlayerAudioHandler>();
+        _player = gameObject.transform.parent.gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
     //Detection if player jumped on something
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,12 +61,16 @@ public class PlayerFootInteraction : MonoBehaviour
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            switch (other.gameObject.tag)
+            // switch (other.gameObject.tag)
+            // {
+            //     case "Trampoline":
+            //         other.GetComponent<Trampoline>().PlayerJump(GetComponentInParent<Rigidbody2D>());
+            //         break;
+            // }
+            IObstacle obstacle = other.gameObject.GetComponent<IObstacle>();
+            if (obstacle != null)
             {
-                case "Trampoline":
-                    other.GetComponent<Trampoline>().PlayerJump(GetComponentInParent<Rigidbody2D>());
-                    break;
-            }
+                obstacle.InteractWithObstacle(_player);}
         }
     }
 }
