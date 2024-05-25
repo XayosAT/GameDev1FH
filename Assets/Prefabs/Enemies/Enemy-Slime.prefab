@@ -181,10 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ece6d4ca486840a78b9ee96a2b94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
   startDirRight: 1
   speed: 2
-  distance: 5
-  coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
+  distance: 20
   SpawnCoinOnDeath: 0
 --- !u!1 &2707577291783952696
 GameObject:
@@ -251,7 +251,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000500679, y: -0.019976139}
+  m_Offset: {x: -0.047180533, y: 0.023845755}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -262,7 +262,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.42441177, y: 0.23893213}
+  m_Size: {x: 0.33105206, y: 0.15128835}
   m_EdgeRadius: 0
 --- !u!114 &3532890302418942013
 MonoBehaviour:
