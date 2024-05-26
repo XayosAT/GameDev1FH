@@ -250,11 +250,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _vertical: 0
   speed: 8
   jumpingPower: 12
   boxSizeJump: {x: 0.52, y: 0.05}
   castDistance: 0.63
   teamColor: 1
+  velocityX: 0
 --- !u!95 &1857406613174601759
 Animator:
   serializedVersion: 5

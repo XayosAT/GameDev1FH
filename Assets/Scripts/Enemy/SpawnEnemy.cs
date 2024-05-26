@@ -21,11 +21,11 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     void callSpawnCheck()
     {
-        Debug.Log("--check--");
         spawnCheck();
     }
 
@@ -35,19 +35,9 @@ public class SpawnEnemy : MonoBehaviour
             boxCollider.bounds.center.y - boxCollider.bounds.extents.y),
             new Vector3(boxCollider.bounds.center.x + boxCollider.bounds.extents.x,
             boxCollider.bounds.center.y + boxCollider.bounds.extents.y), detectionLayer);
-        Debug.Log("len: " + detectedObjects.Length);
         if (detectedObjects != null && detectedObjects.Length / 2 < numberEnemies)
         {
             spawnEnemy();
-            Debug.Log("Ja");
-        }
-        else
-        {
-            Debug.Log("Nein");
-        }
-        for (int i = 0; i < detectedObjects.Length; i++)
-        {
-            Debug.Log(i + ": " + detectedObjects[0].gameObject.name);
         }
     }
 
