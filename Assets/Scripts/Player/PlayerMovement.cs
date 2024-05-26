@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
         if (contactPoint.y > center.y + 0.4f)
         {
             // Apply bounce force
-            _rb.AddForce(new Vector2(0, 3f), ForceMode2D.Impulse);
+            _rb.AddForce(new Vector2(0, 5f), ForceMode2D.Impulse);
             enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage();
         }
     }
@@ -184,17 +184,15 @@ public class PlayerMovement : MonoBehaviour
     private void TakeDamage()
     {
         if (_damaged) return;
-        _playerAnim.SetTrigger("Hit");
+        _playerAnim.SetBool("IsHit", true);
         _damaged = true;
-        StartCoroutine(ResetToIdleAfterDelay(1f));
-        
+        StartCoroutine(ResetToIdleAfterDelay());
     }
     
-    private IEnumerator ResetToIdleAfterDelay(float delay)
+    private IEnumerator ResetToIdleAfterDelay()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
         _damaged = false;
-        _playerAnim.SetTrigger("Idle");
-        
+        _playerAnim.SetBool("IsHit", false);
     }
 }
