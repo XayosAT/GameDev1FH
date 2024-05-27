@@ -18591,10 +18591,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8542870787304579049, guid: 8ed319fa82ccfcb4bbae9bf0ba7710ab, type: 3}
-      propertyPath: teamColor
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
