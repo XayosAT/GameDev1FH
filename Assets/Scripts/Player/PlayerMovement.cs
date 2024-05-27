@@ -139,8 +139,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    private void OnCollisionEnter2D(Collision2D collision) {
+        int layerEnemy = LayerMask.NameToLayer("Enemy");
         if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.gameObject.GetComponent<PlayerMovement>().teamColor == teamColor)
@@ -151,6 +151,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 DamageEnemy(collision);
             }
+        }
+
+        if (collision.gameObject.layer == layerEnemy) {
+            
         }
     }
     

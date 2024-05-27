@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IObstacle 
 {
-    public void InteractWithObstacle(GameObject player);
+    void InteractWithObstacle(GameObject player);
 }

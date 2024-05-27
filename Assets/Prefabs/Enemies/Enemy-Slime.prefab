@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 457376658453802826}
   - component: {fileID: 5535991833214084653}
   - component: {fileID: 8699025033844746236}
+  - component: {fileID: 8076758308269370061}
+  - component: {fileID: 2958231936340358629}
   m_Layer: 12
   m_Name: Enemy-Slime
   m_TagString: Slime
@@ -103,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.25
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -186,6 +188,39 @@ MonoBehaviour:
   speed: 2
   distance: 20
   SpawnCoinOnDeath: 0
+--- !u!95 &8076758308269370061
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459710041902006973}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee3410a56f7d31d4681e89c223bb49cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2958231936340358629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459710041902006973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47692354937410a9b59a7ce52d7da76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2707577291783952696
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 2190096416594571291}
   - component: {fileID: 283516812008634786}
   - component: {fileID: 7760958596691950268}
+  - component: {fileID: 6294691620344023055}
+  - component: {fileID: 9031350198572713712}
   m_Layer: 12
   m_Name: Enemy-Turtle
   m_TagString: Turtle
@@ -277,3 +279,36 @@ MonoBehaviour:
   speed: 2
   distance: 20
   SpawnCoinOnDeath: 0
+--- !u!95 &6294691620344023055
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867072341865672089}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68f983200e05d654eae667973f32bcc2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9031350198572713712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867072341865672089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394e07158e2f2b54cbb292a4c1c5b34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
