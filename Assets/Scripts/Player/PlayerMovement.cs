@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public float castDistance;
     public TeamColor teamColor;
     
+    public GameObject bulletPrefab;
+    
     private bool _damaged = false;
     
     // Start is called before the first frame update
@@ -139,6 +141,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 spawnPosition = _isFacingRight ? 
+                new Vector2(transform.position.x + 1f, transform.position.y) : 
+                new Vector2(transform.position.x - 1f, transform.position.y);
+            
+            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+            
+            Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
+            
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            
+            if (bulletScript != null)
+            {
+                bulletScript.Initialize(direction, teamColor);
+            }
+        }
+    }
+    
     private void OnCollisionEnter2D(Collision2D collision) {
         int layerEnemy = LayerMask.NameToLayer("Enemy");
         if (collision.gameObject.CompareTag("Player"))
@@ -185,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void TakeDamage()
+    public void TakeDamage()
     {
         if (_damaged) return;
         _playerAnim.SetBool("IsHit", true);
