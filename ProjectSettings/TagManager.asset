@@ -16,6 +16,7 @@ TagManager:
   - SpikeHead
   - Ghost
   - Detector
+  - Mushroom
   layers:
   - Default
   - TransparentFX

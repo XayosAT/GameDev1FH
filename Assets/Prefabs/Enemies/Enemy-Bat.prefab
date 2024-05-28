@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 988532820360462044}
   - component: {fileID: 7333261316885737777}
   - component: {fileID: 5537486586514247023}
+  - component: {fileID: 5202903356083099613}
+  - component: {fileID: 3694055629444984095}
   m_Layer: 12
   m_Name: Enemy-Bat
   m_TagString: Bat
@@ -186,7 +188,7 @@ MonoBehaviour:
   coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
   startDirRight: 1
   speed: 1
-  distance: 20
+  distance: 15
   SpawnCoinOnDeath: 0
 --- !u!114 &5537486586514247023
 MonoBehaviour:
@@ -200,7 +202,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5176dbb6500e0146b8f1ca91f6a6208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingPower: 1
+  flyingPower: 0.73
+--- !u!114 &5202903356083099613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959143114193122990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cc90816eea07644b62d02e2bc22132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &3694055629444984095
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959143114193122990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdffd33e4531b61409152fa554cba730, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7780078791277809607
 GameObject:
   m_ObjectHideFlags: 0
