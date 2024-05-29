@@ -19,7 +19,8 @@ public class EnemyHorizontalWallFlip : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground") ||
-            other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
+            other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             _enemyController.Flip();
         }

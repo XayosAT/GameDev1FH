@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5525907740339074711}
   - component: {fileID: 988532820360462044}
   - component: {fileID: 7333261316885737777}
-  - component: {fileID: 5537486586514247023}
   - component: {fileID: 5202903356083099613}
   - component: {fileID: 3694055629444984095}
   m_Layer: 12
@@ -117,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!60 &988532820360462044
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -190,19 +189,6 @@ MonoBehaviour:
   speed: 1
   distance: 15
   SpawnCoinOnDeath: 0
---- !u!114 &5537486586514247023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959143114193122990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5176dbb6500e0146b8f1ca91f6a6208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flyingPower: 0.73
 --- !u!114 &5202903356083099613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +287,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009388685, y: 0.0017048419}
+  m_Offset: {x: -0.12296446, y: 0.0017048419}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -312,7 +298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5086161, y: 0.23560542}
+  m_Size: {x: 0.28146455, y: 0.23560542}
   m_EdgeRadius: 0
 --- !u!114 &180217955336695373
 MonoBehaviour:

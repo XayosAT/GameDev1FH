@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0054974556, y: 0.0036307871}
+  m_Offset: {x: -0.054932453, y: 0.0036307871}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35173512, y: 0.09408063}
+  m_Size: {x: 0.25189435, y: 0.09408063}
   m_EdgeRadius: 0
 --- !u!114 &1747756295506443171
 MonoBehaviour:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
-  startDirRight: 1
+  startDirRight: 0
   speed: 2
   distance: 20
   SpawnCoinOnDeath: 0

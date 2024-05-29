@@ -12,6 +12,7 @@ public class RockHeadSpikeHeadController : MonoBehaviour
     public bool movePositiveDirection = true;
     public float startPosTolerance = 0.5f;
     public bool SpawnCoinOnDeath;
+    public float restAtStartPoint = 2.5f;
     private Vector3 startPos;
     private bool isReturning = false;
 
@@ -40,7 +41,7 @@ public class RockHeadSpikeHeadController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             isReturning = false;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(restAtStartPoint);
             StartMove();
         }
     }
@@ -80,7 +81,7 @@ public class RockHeadSpikeHeadController : MonoBehaviour
     IEnumerator ReturnToStart()
     {
         isReturning = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         if (moveHorizontally)
         {
             if (transform.position.x > startPos.x)
