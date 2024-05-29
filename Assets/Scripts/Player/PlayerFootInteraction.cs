@@ -26,7 +26,7 @@ public class PlayerFootInteraction : MonoBehaviour
             IKillableEnemy enemy = other.gameObject.GetComponent<IKillableEnemy>();
             if (enemy != null) {
                 //gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
-                enemy.InteractWithEnemy(_player);
+                //enemy.InteractWithEnemy(_player);
             }
             
             //Name of Tag of Enemy as case
