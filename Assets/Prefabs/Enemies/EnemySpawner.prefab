@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2d3a8ce4c9bb54193a7d194d90dc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: 0, z: -2}
   spawnRate: 10
   startDelay: 2
   numberEnemies: 3
