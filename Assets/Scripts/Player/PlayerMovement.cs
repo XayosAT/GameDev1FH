@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
-        if (IsGrounded() && _horizontal != 0) {
+        if (IsGrounded() && _horizontal != 0 && !_damaged) {
             _playerAnim.SetBool("IsRunning", true);
         }
     }
@@ -218,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
     
     private IEnumerator ResetToIdleAfterDelay()
     {
+        //Debug.Log(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
         _damaged = false;
         _playerAnim.SetBool("IsHit", false);

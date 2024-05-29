@@ -1,30 +1,40 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class PlayerInteractions : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class PlayerInteractions : MonoBehaviour {
 
+    private Animator _playerAnim;
+    private PlayerMovement _playerMovement;
+    private IKillableEnemy _killableEnemy;
+    private Rigidbody2D _playerRb;
+
+    void Start() {
+        _playerAnim = GetComponent<Animator>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _playerRb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     //Detection if something hit player
-    /*private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-            Vector2 contactPoint = other.GetContact(0).point;
-            Vector2 center = other.collider.bounds.center;
-            
-            IKillableEnemy killableEnemy = other.gameObject.GetComponent<IKillableEnemy>();
-            if (killableEnemy != null) {
-                GetComponentInParent<PlayerStats>().AddEnemyKilled();
-                killableEnemy.InteractWithEnemy(gameObject, other);
+            _killableEnemy =  other.gameObject.GetComponent<IKillableEnemy>();
+            if (_killableEnemy is { IsHit: false }) {
+                _playerMovement.TakeDamage();
+                _killableEnemy.InteractWithPlayer(_playerRb, other);
+            }
+
+        }
+    }
+
+    /*private void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            _playerMovement.TakeDamage();
+            _killableEnemy =  other.gameObject.GetComponent<IKillableEnemy>();
+            if (_killableEnemy is { IsHit: false }) {
+                _killableEnemy.InteractWithPlayer(_playerRb, other);
             }
         }
     }*/

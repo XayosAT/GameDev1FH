@@ -9,7 +9,7 @@ public class EnemyHorizontalController : MonoBehaviour
     public bool startDirRight = true;
     public float speed = 2f;
     public float distance = 5f;
-    private float _horizontal = -1;
+    public float _horizontal = -1;
     public bool SpawnCoinOnDeath;
 
     // Start is called before the first frame update
