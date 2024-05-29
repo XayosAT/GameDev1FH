@@ -3,5 +3,7 @@ using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
 public interface IKillableEnemy {
-    void InteractWithEnemy(GameObject player, Collision2D collision2D);
+    bool IsHit { get; set; }
+    void InteractWithEnemy(GameObject player);
+    //void InteractWithEnemy(GameObject player);
 }

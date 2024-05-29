@@ -16,7 +16,7 @@ public class PlayerFootInteraction : MonoBehaviour
     
 
     //Detection if player jumped on something
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (!other.gameObject.CompareTag("Detector"))
         {
@@ -25,10 +25,10 @@ public class PlayerFootInteraction : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
             
             IKillableEnemy enemy = other.gameObject.GetComponent<IKillableEnemy>();
-            /*if (enemy != null) {
+            if (enemy != null) {
                 gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                 enemy.InteractWithEnemy(_player);
-            }*/
+            }
             
             //Name of Tag of Enemy as case
             /*switch (other.gameObject.tag)

@@ -16,7 +16,7 @@ public class PlayerInteractions : MonoBehaviour
     }
 
     //Detection if something hit player
-    private void OnCollisionEnter2D(Collision2D other) {
+    /*private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
             Vector2 contactPoint = other.GetContact(0).point;
             Vector2 center = other.collider.bounds.center;
@@ -27,5 +27,5 @@ public class PlayerInteractions : MonoBehaviour
                 killableEnemy.InteractWithEnemy(gameObject, other);
             }
         }
-    }
+    }*/
 }
