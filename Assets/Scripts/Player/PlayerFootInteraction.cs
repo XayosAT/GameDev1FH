@@ -23,22 +23,23 @@ public class PlayerFootInteraction : MonoBehaviour
             _audioHandler.PlaySound("Hit");
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            
             IKillableEnemy enemy = other.gameObject.GetComponent<IKillableEnemy>();
-            if (enemy != null) {
-                //gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
-                //enemy.InteractWithEnemy(_player);
-            }
+            /*if (enemy != null) {
+                gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
+                enemy.InteractWithEnemy(_player);
+            }*/
             
             //Name of Tag of Enemy as case
-            switch (other.gameObject.tag)
+            /*switch (other.gameObject.tag)
             {
                 /*case "Slime":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
-                    break;*/
+                    break;#1#
                 /*case "TurtleSpike":
 
-                    break;*/
+                    break;#1#
                 case "Snail":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
@@ -46,15 +47,15 @@ public class PlayerFootInteraction : MonoBehaviour
                 /*case "Turtle":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
-                    break;*/
+                    break;#1#
                 /*case "Bat":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
-                    break;*/
+                    break;#1#
                 /*case "BlueBird":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
-                    break;*/
+                    break;#1#
                 case "Ghost":
                     gameObject.GetComponentInParent<PlayerStats>().AddEnemyKilled();
                     other.GetComponent<EnemyHorizontalController>().PlayerKill();
@@ -65,7 +66,7 @@ public class PlayerFootInteraction : MonoBehaviour
                 case "SpikeHead":
 
                     break;
-            }
+            }*/
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
