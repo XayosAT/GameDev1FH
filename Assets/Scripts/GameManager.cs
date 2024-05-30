@@ -12,11 +12,16 @@ public class GameManager : MonoBehaviour
     public GameObject win;
     public GameObject titleScreen;
     public GameObject startButton;
-    public GameObject CountDownScreen;
+    public GameObject countDownScreen;
+    public GameObject winScreen;
     public List<GameObject> singlePlayerObjects;
     public List<GameObject> multiPlayerObjects;
+    public int neededWinCoins = 3;
+    public GameObject textRedTeam;
+    public GameObject textBlueTeam;
 
     private float _countdown = 5;
+    private bool isMultiplayer = false;
 
     // Property to access the instance
     public static GameManager Instance
@@ -78,16 +83,48 @@ public class GameManager : MonoBehaviour
 
     private void WinCheck()
     {
-        if (_teamScores[TeamColor.Red] >= 3 || _teamScores[TeamColor.Blue] >= 3)
+        if (isMultiplayer)
         {
-            win.SetActive(true);
+            if (_teamScores[TeamColor.Red] >= neededWinCoins)
+            {
+                ShowWinScreens();
+                textBlueTeam.gameObject.SetActive(false);
+                textRedTeam.gameObject.SetActive(true);
+            }
+            else if (_teamScores[TeamColor.Blue] >= neededWinCoins)
+            {
+                ShowWinScreens();
+                textBlueTeam.gameObject.SetActive(true);
+                textRedTeam.gameObject.SetActive(false);
+            }
         }
+        else
+        {
+            if (_teamScores[TeamColor.Red] >= neededWinCoins ||
+                _teamScores[TeamColor.Blue] >= neededWinCoins)
+            {
+                ShowWinScreens();
+            }
+        }
+    }
+
+    private void ShowWinScreens()
+    {
+        win.SetActive(true);
+        winScreen.gameObject.SetActive(true);
+        StartCoroutine(GameStop(2f));
+    }
+
+    private IEnumerator GameStop(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        Time.timeScale = 0f;
     }
 
     public void StartGame()
     {
         titleScreen.gameObject.SetActive(false);
-        CountDownScreen.gameObject.SetActive(true);
+        countDownScreen.gameObject.SetActive(true);
         StartCoroutine(Countdown(1f));
     }
 
@@ -95,12 +132,12 @@ public class GameManager : MonoBehaviour
     {
         while (_countdown >= 1)
         {
-            CountDownScreen.GetComponent<TextMeshProUGUI>().text = _countdown.ToString();
+            countDownScreen.GetComponent<TextMeshProUGUI>().text = _countdown.ToString();
             _countdown -= 1;
             yield return new WaitForSecondsRealtime(seconds);
         }
         Time.timeScale = 1.0f;
-        CountDownScreen.gameObject.SetActive(false);
+        countDownScreen.gameObject.SetActive(false);
         _countdown = 5;
     }
 
@@ -115,6 +152,7 @@ public class GameManager : MonoBehaviour
             multiPlayerobject.gameObject.SetActive(true);
         }
         ShowStartButton();
+        isMultiplayer = true;
     }
 
     public void ShowSingleplayer()
@@ -128,6 +166,7 @@ public class GameManager : MonoBehaviour
             singlePlayerobject.gameObject.SetActive(true);
         }
         ShowStartButton();
+        isMultiplayer = false;
     }
 
     public void ShowStartButton()
