@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,11 +19,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSizeJump;
     public float castDistance;
     public TeamColor teamColor;
-    
+
     public GameObject bulletPrefab;
-    
+
     private bool _damaged = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,41 +35,43 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
-        if (IsGrounded() && _horizontal == 0) {
+    void Update()
+    {
+        if (IsGrounded() && _horizontal == 0)
+        {
             _playerAnim.SetBool("IsRunning", false);
         }
         _playerAnim.SetFloat("yVelocity", _rb.velocity.y);
         CheckFacingDirection();
     }
-    
+
     void FixedUpdate()
     {
         //Movement is handled in FixedUpdate because we are using physics
         HandleMovement();
     }
-    
+
     private IEnumerator SetHasAppeared()
     {
         // Wait for the length of the appearing animation
         yield return new WaitForSeconds(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
         _playerAnim.SetBool("hasAppeared", true);
     }
-    
+
     private void HandleMovement()
     {
-        if(!IsFacingWall() || IsGrounded())
+        if (!IsFacingWall() || IsGrounded())
         {
             float movespeed = speed;
             if (_damaged) movespeed = speed * 0.5f;
-            
+
             _rb.velocity = new Vector2(_horizontal * movespeed, _rb.velocity.y);
         }
     }
-    
+
     private void CheckFacingDirection()
     {
-        if(!_isFacingRight && _horizontal > 0f || _isFacingRight && _horizontal < 0f)
+        if (!_isFacingRight && _horizontal > 0f || _isFacingRight && _horizontal < 0f)
         {
             Flip();
         }
@@ -80,7 +79,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed && IsGrounded() && !_damaged) {
+        if (context.performed && IsGrounded() && !_damaged)
+        {
             _playerAnim.SetBool("IsRunning", false);
             //_playerAnim.SetTrigger("Jump_trig");
             _playerAnim.SetBool("IsJumping", true);
@@ -90,8 +90,9 @@ public class PlayerMovement : MonoBehaviour
             _rb.AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
             _playerStats.AddJumped();
         }
-        
-        if(context.canceled && _rb.velocity.y > 0f) {
+
+        if (context.canceled && _rb.velocity.y > 0f)
+        {
             //_playerAnim.SetBool("IsRunning", false);
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         //return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
-        
+
         //THIS IS ANOTHER WAY TO CHECK IF THE PLAYER IS GROUNDED, USING A BOXCAST
         if (Physics2D.BoxCast(transform.position, boxSizeJump, 0, -transform.up, castDistance, groundLayer))
         {
@@ -110,15 +111,15 @@ public class PlayerMovement : MonoBehaviour
         }
         _playerAnim.SetBool("IsJumping", true);
         return false;
-        
+
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSizeJump);
+        Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSizeJump);
     }
-    
+
 
     private bool IsFacingWall()
     {
@@ -136,33 +137,41 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         _horizontal = context.ReadValue<Vector2>().x;
-        if (IsGrounded() && _horizontal != 0 && !_damaged) {
+        if (IsGrounded() && _horizontal != 0 && !_damaged)
+        {
             _playerAnim.SetBool("IsRunning", true);
         }
     }
-    
+
     public void Fire(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Vector2 spawnPosition = _isFacingRight ? 
-                new Vector2(transform.position.x + 1f, transform.position.y) : 
+            Vector2 spawnPosition = _isFacingRight ?
+                new Vector2(transform.position.x + 1f, transform.position.y) :
                 new Vector2(transform.position.x - 1f, transform.position.y);
-            
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            
+
+            Quaternion spawnRot = Quaternion.identity;
+            if (_isFacingRight)
+            {
+                spawnRot = Quaternion.Euler(bulletPrefab.transform.eulerAngles + new Vector3(0, 0, 180));
+            }
+
+            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, spawnRot);
+
             Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
-            
+
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-            
+
             if (bulletScript != null)
             {
                 bulletScript.Initialize(direction, teamColor);
             }
         }
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision) {
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         int layerEnemy = LayerMask.NameToLayer("Enemy");
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -176,11 +185,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.layer == layerEnemy) {
-            
+        if (collision.gameObject.layer == layerEnemy)
+        {
+
         }
     }
-    
+
     private void BounceAlly(Collision2D ally)
     {
         Vector2 contactPoint = ally.GetContact(0).point;
@@ -193,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
             _rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
         }
     }
-    
+
     private void DamageEnemy(Collision2D enemy)
     {
         Vector2 contactPoint = enemy.GetContact(0).point;
@@ -207,7 +217,7 @@ public class PlayerMovement : MonoBehaviour
             enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage();
         }
     }
-    
+
     public void TakeDamage()
     {
         if (_damaged) return;
@@ -215,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
         _damaged = true;
         StartCoroutine(ResetToIdleAfterDelay());
     }
-    
+
     private IEnumerator ResetToIdleAfterDelay()
     {
         //Debug.Log(_playerAnim.GetCurrentAnimatorStateInfo(0).length);

@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     private Dictionary<TeamColor, int> _teamScores = new Dictionary<TeamColor, int>();
 
-    public GameObject win;
     public GameObject titleScreen;
     public GameObject startButton;
     public GameObject countDownScreen;
@@ -110,7 +109,6 @@ public class GameManager : MonoBehaviour
 
     private void ShowWinScreens()
     {
-        win.SetActive(true);
         winScreen.gameObject.SetActive(true);
         StartCoroutine(GameStop(2f));
     }
