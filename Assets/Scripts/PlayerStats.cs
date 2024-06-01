@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -12,13 +10,13 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void CoinCollected(int coinvalue)
@@ -26,18 +24,15 @@ public class PlayerStats : MonoBehaviour
         totalCoins++;
         collectedCoinPoints += coinvalue;
         Debug.Log("Total Coins: " + totalCoins);
-        Debug.Log("Coin Points: " + collectedCoinPoints);
     }
 
     public void AddJumped()
     {
         totalJumped++;
-        Debug.Log("Jumped: " + totalJumped);
     }
 
     public void AddEnemyKilled()
     {
         totalEnemyKilled++;
-        Debug.Log("Total Enemys Killed: " + totalEnemyKilled);
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartGameButton : MonoBehaviour
+public class GameRestart : MonoBehaviour
 {
     private Button button;
     private GameManager _gameManager;
@@ -21,9 +21,8 @@ public class StartGameButton : MonoBehaviour
 
     }
 
-    void ButtonClicked()
+    private void ButtonClicked()
     {
-        _gameManager.StartGame();
-        gameObject.SetActive(false);
+        _gameManager.ResetGame();
     }
 }

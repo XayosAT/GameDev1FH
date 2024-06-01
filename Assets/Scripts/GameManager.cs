@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     // Static variable that holds the instance
-    private static GameManager _instance;
+    //private static GameManager _instance;
     private Dictionary<TeamColor, int> _teamScores = new Dictionary<TeamColor, int>();
 
     public GameObject titleScreen;
@@ -21,9 +22,10 @@ public class GameManager : MonoBehaviour
 
     private float _countdown = 5;
     private bool isMultiplayer = false;
+    private bool _gameIsRunning = true;
 
     // Property to access the instance
-    public static GameManager Instance
+    /*public static GameManager Instance
     {
         get
         {
@@ -39,12 +41,12 @@ public class GameManager : MonoBehaviour
             }
             return _instance;
         }
-    }
+    }*/
 
     // Ensure that the instance is not destroyed between scenes
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        /*if (_instance != null && _instance != this)
         {
             Destroy(gameObject); // Ensure there are no duplicate instances
         }
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject); // Don't destroy this object when loading new scenes
-        }
+        }*/
 
         Time.timeScale = 0f;
     }
@@ -73,31 +75,29 @@ public class GameManager : MonoBehaviour
         _teamScores.Add(TeamColor.Blue, 0);
     }
 
-
     public void AddCoinToTeamScore(TeamColor teamColor)
     {
         _teamScores[teamColor]++;
-        Debug.Log("Team " + teamColor + " score: " + _teamScores[teamColor]);
     }
 
     private void WinCheck()
     {
-        if (isMultiplayer)
+        if (_gameIsRunning && isMultiplayer)
         {
             if (_teamScores[TeamColor.Red] >= neededWinCoins)
             {
-                ShowWinScreens();
                 textBlueTeam.gameObject.SetActive(false);
                 textRedTeam.gameObject.SetActive(true);
+                ShowWinScreens();
             }
             else if (_teamScores[TeamColor.Blue] >= neededWinCoins)
             {
-                ShowWinScreens();
                 textBlueTeam.gameObject.SetActive(true);
                 textRedTeam.gameObject.SetActive(false);
+                ShowWinScreens();
             }
         }
-        else
+        else if (_gameIsRunning)
         {
             if (_teamScores[TeamColor.Red] >= neededWinCoins ||
                 _teamScores[TeamColor.Blue] >= neededWinCoins)
@@ -109,7 +109,17 @@ public class GameManager : MonoBehaviour
 
     private void ShowWinScreens()
     {
+        _gameIsRunning = false;
+        if (isMultiplayer)
+        {
+            GameObject.Find("P1 Cam - Main").GetComponent<BackgroundMusicHandling>().StopMusic();
+        }
+        else
+        {
+            GameObject.Find("Main Camera").GetComponent<BackgroundMusicHandling>().StopMusic();
+        }
         winScreen.gameObject.SetActive(true);
+        winScreen.gameObject.GetComponent<AudioSource>().Play();
         StartCoroutine(GameStop(2f));
     }
 
@@ -170,6 +180,11 @@ public class GameManager : MonoBehaviour
     public void ShowStartButton()
     {
         startButton.gameObject.SetActive(true);
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

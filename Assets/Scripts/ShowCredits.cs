@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartGameButton : MonoBehaviour
+public class ShowCredits : MonoBehaviour
 {
     private Button button;
-    private GameManager _gameManager;
+    public GameObject credits;
 
     // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         button.onClick.AddListener(ButtonClicked);
     }
@@ -23,7 +22,7 @@ public class StartGameButton : MonoBehaviour
 
     void ButtonClicked()
     {
-        _gameManager.StartGame();
-        gameObject.SetActive(false);
+        gameObject.transform.parent.gameObject.SetActive(false);
+        credits.gameObject.SetActive(true);
     }
 }

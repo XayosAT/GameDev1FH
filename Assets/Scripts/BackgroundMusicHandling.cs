@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundMusicHandling : MonoBehaviour
 {
     private AudioSource[] _audioSources;
     private int _currentAudioSourceIndex = 0;
+    private bool _playMusic = true;
 
     private void Start()
     {
@@ -14,11 +14,9 @@ public class BackgroundMusicHandling : MonoBehaviour
         StartCoroutine(PlayAudioSources());
     }
 
-    
-    
     IEnumerator PlayAudioSources()
     {
-        while (true)
+        while (_playMusic)
         {
             if (_audioSources[_currentAudioSourceIndex].isPlaying == false)
             {
@@ -31,6 +29,19 @@ public class BackgroundMusicHandling : MonoBehaviour
                 yield return null;
             }
         }
-        
+
+    }
+
+    public void StopMusic()
+    {
+        _playMusic = false;
+        try
+        {
+            for (int i = 0; i < _audioSources.Length; i++)
+            {
+                _audioSources[0].Stop();
+            }
+        }
+        catch (Exception) { }
     }
 }
