@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.GetComponent<PlayerMovement>().teamColor != _teamColor)
             {
-                other.gameObject.GetComponent<PlayerMovement>().TakeDamage();
+                other.gameObject.GetComponent<PlayerMovement>().TakeDamage(1.5f);
                 Destroy(gameObject);
             }
         }

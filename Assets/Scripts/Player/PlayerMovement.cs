@@ -109,7 +109,8 @@ public class PlayerMovement : MonoBehaviour
             _playerAnim.SetBool("IsJumping", false);
             return true;
         }
-        _playerAnim.SetBool("IsJumping", true);
+        if(!_damaged)
+            _playerAnim.SetBool("IsJumping", true);
         return false;
 
     }
@@ -214,22 +215,21 @@ public class PlayerMovement : MonoBehaviour
         {
             // Apply bounce force
             _rb.AddForce(new Vector2(0, 5f), ForceMode2D.Impulse);
-            enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage();
+            enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage(1.5f);
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float time)
     {
         if (_damaged) return;
         _playerAnim.SetBool("IsHit", true);
         _damaged = true;
-        StartCoroutine(ResetToIdleAfterDelay());
+        StartCoroutine(ResetToIdleAfterDelay(time));
     }
 
-    private IEnumerator ResetToIdleAfterDelay()
+    private IEnumerator ResetToIdleAfterDelay(float time)
     {
-        //Debug.Log(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
-        yield return new WaitForSeconds(_playerAnim.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(time);
         _damaged = false;
         _playerAnim.SetBool("IsHit", false);
     }
