@@ -171,54 +171,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        int layerEnemy = LayerMask.NameToLayer("Enemy");
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (collision.gameObject.GetComponent<PlayerMovement>().teamColor == teamColor)
-            {
-                BounceAlly(collision);
-            }
-            else
-            {
-                DamageEnemy(collision);
-            }
-        }
-
-        if (collision.gameObject.layer == layerEnemy)
-        {
-
-        }
-    }
-
-    private void BounceAlly(Collision2D ally)
-    {
-        Vector2 contactPoint = ally.GetContact(0).point;
-        Vector2 center = ally.collider.bounds.center;
-
-        // Check if the contact point is above the center of the other player
-        if (contactPoint.y > center.y + 0.4f)
-        {
-            // Apply bounce force
-            _rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
-        }
-    }
-
-    private void DamageEnemy(Collision2D enemy)
-    {
-        Vector2 contactPoint = enemy.GetContact(0).point;
-        Vector2 center = enemy.collider.bounds.center;
-
-        // Check if the contact point is above the center of the other player
-        if (contactPoint.y > center.y + 0.4f)
-        {
-            // Apply bounce force
-            _rb.AddForce(new Vector2(0, 5f), ForceMode2D.Impulse);
-            enemy.gameObject.GetComponent<PlayerMovement>().TakeDamage(1.5f);
-        }
-    }
-
     public void TakeDamage(float time)
     {
         if (_damaged) return;
