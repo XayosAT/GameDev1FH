@@ -190,8 +190,6 @@ public class PlayerMovement : MonoBehaviour
         {
 
         }
-
-       
     }
 
     private void BounceAlly(Collision2D ally)

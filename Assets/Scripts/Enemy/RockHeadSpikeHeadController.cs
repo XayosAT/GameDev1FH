@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class RockHeadSpikeHeadController : MonoBehaviour
+public class RockHeadSpikeHeadController : MonoBehaviour, INotKillableEnemy
 {
     private Rigidbody2D rb;
     public GameObject coin;
@@ -74,7 +74,7 @@ public class RockHeadSpikeHeadController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector2.zero;
         StartCoroutine(ReturnToStart());
     }
 
@@ -113,5 +113,20 @@ public class RockHeadSpikeHeadController : MonoBehaviour
             Instantiate(coin, gameObject.transform.position, coin.transform.rotation);
         }
         Destroy(gameObject);
+    }
+
+    public void InteractWithPlayer(Rigidbody2D playerRb, Collision2D other) {
+        Vector2 contactPoint = other.GetContact(0).point;
+        Vector2 center = other.collider.bounds.center;
+        if (contactPoint.y < center.y) {
+            playerRb.AddForce(new Vector2(0, -2f), ForceMode2D.Impulse);
+            return;
+        }
+        if (contactPoint.x > center.x) {
+            playerRb.AddForce(new Vector2(10f, 5f), ForceMode2D.Impulse);
+        }
+        else {
+            playerRb.AddForce(new Vector2(-10f, 5f), ForceMode2D.Impulse);
+        }
     }
 }

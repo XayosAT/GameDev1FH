@@ -7,6 +7,7 @@ public class PlayerInteractions : MonoBehaviour {
     private Animator _playerAnim;
     private PlayerMovement _playerMovement;
     private IKillableEnemy _killableEnemy;
+    private INotKillableEnemy _notKillableEnemy;
     private Rigidbody2D _playerRb;
 
     void Start() {
@@ -24,6 +25,11 @@ public class PlayerInteractions : MonoBehaviour {
             if (_killableEnemy is { IsHit: false }) {
                 _playerMovement.TakeDamage(1f);
                 _killableEnemy.InteractWithPlayer(_playerRb, other);
+            }
+            _notKillableEnemy = other.gameObject.GetComponent<INotKillableEnemy>();
+            if (_notKillableEnemy != null) {
+                _playerMovement.TakeDamage(1f);
+                _notKillableEnemy.InteractWithPlayer(_playerRb, other);
             }
 
         }

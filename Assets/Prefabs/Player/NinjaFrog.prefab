@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 5423913292016396113}
   - {fileID: 2361785153773242099}
-  - {fileID: 6459517468300122684}
+  - {fileID: 2345063189249453278}
   - {fileID: 3864184874808464476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,6 +240,86 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a9561827-3a4d-4839-82a1-32875fdcca4e
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 23918277-2cee-4b90-98d8-30597eb78e5a
+    m_ActionName: Player2/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 08196f52-6c92-4ec5-aa1c-6e2d2e7e2d32
+    m_ActionName: Player2/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8fdc616d-7f97-4bb2-bb7d-8b5291e57344
+    m_ActionName: Player2/Fire[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed90befe-54f1-4eee-84eb-bb47f7475dfe
+    m_ActionName: Player2/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 121408f2-c86f-4122-88e5-269b53c373f2
+    m_ActionName: Player3/Move[/Keyboard/u,/Keyboard/j,/Keyboard/h,/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e50669e7-3ea4-4f15-9674-667695bff64f
+    m_ActionName: Player3/Look
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7ba9954b-a8df-48a1-b7fa-952ffb9a837e
+    m_ActionName: Player3/Fire[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b39ad37-432f-4e29-92ed-829785017800
+    m_ActionName: Player3/Jump[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 924a25f9-5f7c-44dd-bb74-fa820fa5addd
+    m_ActionName: PlayerController/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cab1fdee-e174-431f-8976-f9e9a100c2dc
+    m_ActionName: PlayerController/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91cb1ed3-aea1-4916-8f3d-73632836c3e6
+    m_ActionName: PlayerController/Fire
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b68217a-5c11-4b34-9b1a-8ab8b658c1d2
+    m_ActionName: PlayerController/Jump
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a21874ba-9a8e-4798-9d44-8575f398fae1
+    m_ActionName: PlayerController2/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9f276c4-ce3b-4855-b959-3106bebe244a
+    m_ActionName: PlayerController2/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b30704e3-c227-46ee-9335-a61bce322e86
+    m_ActionName: PlayerController2/Fire
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfc5b4a7-89e7-49d3-8ec9-e2aed8639d50
+    m_ActionName: PlayerController2/Jump
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b74888b3-3d54-4843-a5b6-0b7bc41d5a74
+    m_ActionName: SinglePlayer/Move[/Keyboard/upArrow,/Keyboard/w,/Keyboard/downArrow,/Keyboard/s,/Keyboard/leftArrow,/Keyboard/a,/Keyboard/rightArrow,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59a950dd-6ea3-4ae0-ad5c-c721199b948f
+    m_ActionName: SinglePlayer/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ca8a6708-43ae-4e8f-b6e1-5c9e3eadd9fd
+    m_ActionName: SinglePlayer/Fire[/Mouse/rightButton,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dce11abe-785b-4d98-83a8-a71c68861f9a
+    m_ActionName: SinglePlayer/Jump[/Mouse/leftButton,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -381,86 +461,6 @@ MonoBehaviour:
   audioSources:
   - {fileID: 8221717441845194499}
   - {fileID: 8054995277809283554}
---- !u!1 &1156227230718518362
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6459517468300122684}
-  - component: {fileID: 5877257609627493084}
-  - component: {fileID: 3077665197074602429}
-  m_Layer: 0
-  m_Name: FootCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6459517468300122684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156227230718518362}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0083, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6380263207717046132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5877257609627493084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156227230718518362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027bb21f415e8384095a0fa899c2c283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!70 &3077665197074602429
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156227230718518362}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.158}
-  m_Size: {x: 0.147, y: 0.021}
-  m_Direction: 1
 --- !u!1 &1319537857162950381
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,3 +812,83 @@ Transform:
   - {fileID: 5000381787858779110}
   m_Father: {fileID: 6380263207717046132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9033256913728483169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2345063189249453278}
+  - component: {fileID: 6544232775590653589}
+  - component: {fileID: 2794928327982703770}
+  m_Layer: 0
+  m_Name: FootCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2345063189249453278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033256913728483169}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.008299978, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6380263207717046132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6544232775590653589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033256913728483169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027bb21f415e8384095a0fa899c2c283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &2794928327982703770
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033256913728483169}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00027956415, y: -0.15366936}
+  m_Size: {x: 0.14141245, y: 0.02966141}
+  m_Direction: 1

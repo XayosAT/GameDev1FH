@@ -396,6 +396,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dce11abe-785b-4d98-83a8-a71c68861f9a
     m_ActionName: SinglePlayer/Jump[/Mouse/leftButton,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 121408f2-c86f-4122-88e5-269b53c373f2
+    m_ActionName: Player3/Move[/Keyboard/u,/Keyboard/j,/Keyboard/h,/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e50669e7-3ea4-4f15-9674-667695bff64f
+    m_ActionName: Player3/Look
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7ba9954b-a8df-48a1-b7fa-952ffb9a837e
+    m_ActionName: Player3/Fire[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b39ad37-432f-4e29-92ed-829785017800
+    m_ActionName: Player3/Jump[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a21874ba-9a8e-4798-9d44-8575f398fae1
+    m_ActionName: PlayerController2/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9f276c4-ce3b-4855-b959-3106bebe244a
+    m_ActionName: PlayerController2/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b30704e3-c227-46ee-9335-a61bce322e86
+    m_ActionName: PlayerController2/Fire
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfc5b4a7-89e7-49d3-8ec9-e2aed8639d50
+    m_ActionName: PlayerController2/Jump
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: SinglePlayer
@@ -614,8 +646,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.158}
-  m_Size: {x: 0.147, y: 0.021}
+  m_Offset: {x: -0.00027956415, y: -0.15366936}
+  m_Size: {x: 0.14141245, y: 0.02966141}
   m_Direction: 1
 --- !u!1 &1319537857162950381
 GameObject:

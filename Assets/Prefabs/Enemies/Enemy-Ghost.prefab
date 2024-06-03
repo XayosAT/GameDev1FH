@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8297124007818260668}
   - component: {fileID: 9222788005490038084}
   - component: {fileID: 4645753284763534812}
+  - component: {fileID: 8356648282776910297}
+  - component: {fileID: 8937168497976897456}
   m_Layer: 12
   m_Name: Enemy-Ghost
   m_TagString: Ghost
@@ -182,7 +184,41 @@ MonoBehaviour:
   startDirRight: 0
   speed: 0.85
   distance: 20
+  _horizontal: -1
   SpawnCoinOnDeath: 0
+--- !u!95 &8356648282776910297
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284290002941692123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b549f5783164c9b468e9f7aa2f2d7d18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8937168497976897456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284290002941692123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4ed8f2ec309024983bf91e33c107e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2045966796927553675
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,23 +27,18 @@ public class Turtle : MonoBehaviour, IKillableEnemy {
     public void InteractWithPlayer(Rigidbody2D playerRb, Collision2D other) {
         Vector2 contactPoint = other.GetContact(0).point;
         Vector2 center = other.collider.bounds.center;
-        bool flip = false;
-        //knockback to right by 45 degrees
+
         if (contactPoint.x > center.x) {
             if (_enemyHorizontalController._horizontal > 0) {
-                flip = true;
+                _enemyHorizontalController.Flip();
             }
             playerRb.AddForce(new Vector2(10f, 5f), ForceMode2D.Impulse);
         }
         else {
             if (_enemyHorizontalController._horizontal < 0) {
-                flip = true;
+                _enemyHorizontalController.Flip();
             }
             playerRb.AddForce(new Vector2(-10f, 5f), ForceMode2D.Impulse);
-        }
-
-        if (flip) {
-            _enemyHorizontalController.Flip();
         }
     }
 
