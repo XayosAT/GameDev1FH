@@ -190,6 +190,28 @@ public class PlayerMovement : MonoBehaviour
         {
 
         }
+
+        if (collision.gameObject.CompareTag("HoriPlatform"))
+        {
+            transform.parent = collision.transform;
+        }
+        
+        if (collision.gameObject.CompareTag("VertiPlatform"))
+        {
+            transform.parent = collision.transform;
+        }
+    }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("HoriPlatform"))
+        {
+            transform.parent = null;
+        }
+        if (collision.gameObject.CompareTag("VertiPlatform"))
+        {
+            transform.parent = null;
+        }
     }
 
     private void BounceAlly(Collision2D ally)

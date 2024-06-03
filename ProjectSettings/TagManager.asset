@@ -17,6 +17,8 @@ TagManager:
   - Ghost
   - Detector
   - Mushroom
+  - HoriPlatform
+  - VertiPlatform
   layers:
   - Default
   - TransparentFX
