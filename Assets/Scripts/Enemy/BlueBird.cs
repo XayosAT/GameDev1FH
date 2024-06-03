@@ -28,7 +28,11 @@ public class BlueBird : MonoBehaviour, IKillableEnemy {
         Vector2 contactPoint = other.GetContact(0).point;
         Vector2 center = other.collider.bounds.center;
         bool flip = false;
-        //knockback to right by 45 degrees
+        if (contactPoint.y < center.y) {
+            playerRb.AddForce(new Vector2(0, -2f), ForceMode2D.Impulse);
+            return;
+        }
+        
         if (contactPoint.x > center.x) {
             if (_enemyHorizontalController._horizontal > 0) {
                 flip = true;

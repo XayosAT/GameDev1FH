@@ -22,7 +22,7 @@ public class PlayerInteractions : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
             _killableEnemy =  other.gameObject.GetComponent<IKillableEnemy>();
             if (_killableEnemy is { IsHit: false }) {
-                _playerMovement.TakeDamage();
+                _playerMovement.TakeDamage(1f);
                 _killableEnemy.InteractWithPlayer(_playerRb, other);
             }
 
