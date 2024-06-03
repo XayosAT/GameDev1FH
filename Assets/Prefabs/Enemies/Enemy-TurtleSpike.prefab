@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 6214362726718637500}
   - component: {fileID: 9111232105798959497}
   - component: {fileID: 1478016207489487649}
+  - component: {fileID: 8186807753019471621}
   m_Layer: 12
   m_Name: Enemy-TurtleSpike
   m_TagString: TurtleSpike
@@ -274,4 +275,17 @@ MonoBehaviour:
   startDirRight: 1
   speed: 2
   distance: 20
+  _horizontal: -1
   SpawnCoinOnDeath: 0
+--- !u!114 &8186807753019471621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161168524022330595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbae4a39b2a8bb24995d08354e709a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
