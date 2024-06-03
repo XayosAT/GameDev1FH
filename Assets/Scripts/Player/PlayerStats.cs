@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour
     {
         totalCoins++;
         collectedCoinPoints += coinvalue;
-        Debug.Log("Total Coins: " + totalCoins);
     }
 
     public void AddJumped()

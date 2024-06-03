@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject startButton;
     public GameObject countDownScreen;
+    public GameObject teamCoinsOverlay;
     public GameObject winScreen;
     public List<GameObject> singlePlayerObjects;
     public List<GameObject> multiPlayerObjects;
     public int neededWinCoins = 3;
     public GameObject textRedTeam;
     public GameObject textBlueTeam;
+    public TextMeshProUGUI teamRedCoins;
+    public TextMeshProUGUI teamBlueCoins;
+    public TextMeshProUGUI singlePlayerCoins;
 
     private float _countdown = 5;
     private bool isMultiplayer = false;
@@ -78,6 +82,21 @@ public class GameManager : MonoBehaviour
     public void AddCoinToTeamScore(TeamColor teamColor)
     {
         _teamScores[teamColor]++;
+        if (isMultiplayer)
+        {
+            if (teamColor == TeamColor.Red)
+            {
+                teamRedCoins.text = _teamScores[teamColor].ToString();
+            }
+            else if (teamColor == TeamColor.Blue)
+            {
+                teamBlueCoins.text = _teamScores[teamColor].ToString();
+            }
+        }
+        else
+        {
+            singlePlayerCoins.text = _teamScores[teamColor].ToString();
+        }
     }
 
     private void WinCheck()
@@ -118,6 +137,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Find("Main Camera").GetComponent<BackgroundMusicHandling>().StopMusic();
         }
+        teamCoinsOverlay.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(true);
         winScreen.gameObject.GetComponent<AudioSource>().Play();
         StartCoroutine(GameStop(2f));
@@ -147,6 +167,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         countDownScreen.gameObject.SetActive(false);
         _countdown = 5;
+        teamCoinsOverlay.gameObject.SetActive(true);
     }
 
     public void ShowMultiplayer()

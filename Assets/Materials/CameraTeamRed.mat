@@ -62,10 +62,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _BorderSize: 0.025
-    - _BorderSizeBottom: 0.005
-    - _BorderSizeLeft: 0.002
-    - _BorderSizeRight: 0.002
-    - _BorderSizeTop: 0.005
+    - _BorderSizeBottom: 0.01
+    - _BorderSizeLeft: 0.004
+    - _BorderSizeRight: 0.004
+    - _BorderSizeTop: 0.01
     - _BorderSizeX: 0.009
     - _BorderSizeY: 0.014
     - _BumpScale: 1
@@ -85,7 +85,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BorderColor: {r: 0.8862745, g: 0, b: 0.08627445, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
