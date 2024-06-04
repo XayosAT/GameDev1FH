@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public Transform facingCheck;
     public LayerMask groundLayer;
+    private GameObject _platform;
 
     private float _horizontal;
     public float speed = 8f;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSizeJump;
     public float castDistance;
     public TeamColor teamColor;
+    private Vector2 _platformPrevPos;
 
     public GameObject bulletPrefab;
 
@@ -185,30 +187,17 @@ public class PlayerMovement : MonoBehaviour
                 DamageEnemy(collision);
             }
         }
-
-        if (collision.gameObject.layer == layerEnemy)
-        {
-
-        }
         
         if (collision.gameObject.CompareTag("HoriPlatform"))
         {
             transform.parent = collision.transform;
         }
         
-        if (collision.gameObject.CompareTag("VertiPlatform"))
-        {
-            transform.parent = collision.transform;
-        }
     }
     
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("HoriPlatform"))
-        {
-            transform.parent = null;
-        }
-        if (collision.gameObject.CompareTag("VertiPlatform"))
         {
             transform.parent = null;
         }

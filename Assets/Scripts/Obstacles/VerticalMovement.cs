@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Obstacles
@@ -5,13 +7,14 @@ namespace Obstacles
     public class VerticalMovement : MonoBehaviour, IMovement
     {
         public float speed = 3f;
-        private readonly float yBoundarydestroy = 9.5f;
-        private readonly float yBoundaryinstantiate = -6.5f;
-
+        private Vector3 startPos;
+        public float distance;
+        public bool movingUp;
 
         // Start is called before the first frame update
         void Start()
         {
+            startPos = transform.position;
         }
 
         // Update is called once per frame
@@ -22,19 +25,37 @@ namespace Obstacles
 
         public void Move()
         {
-            if (transform.position.y >= yBoundarydestroy)
+            if (movingUp)
             {
-                InstantiateObstacle();
-                Destroy(gameObject);
-            }    
+                float boundary = startPos.y + distance;
+                
+                if (transform.position.y >= boundary)
+                {
+                    movingUp = false;
+                }    
+                
+                transform.Translate(Vector3.up * (Time.deltaTime * speed));
+                
+            }
+            else
+            {
+                float boundary = startPos.y - distance;
+                
+                if (transform.position.y <= boundary)
+                {
+                    movingUp = true;
+                }       
+                
+                transform.Translate(Vector3.down * (Time.deltaTime * speed));
+            }
             
-            transform.Translate(Vector3.up * (Time.deltaTime * speed));
         }
         
-        private void InstantiateObstacle()
+        private void MoveObstacletoStartPosition(GameObject obstacle)
         {
-            var vertiplatform = Instantiate(gameObject, new Vector3(137, yBoundaryinstantiate, 0), Quaternion.identity);
-            vertiplatform.name = "Grey Off";
+            obstacle.gameObject.SetActive(false);
+            obstacle.transform.position = new Vector3(startPos.x, startPos.y);
+            obstacle.gameObject.SetActive(true);
         }
         
     }
