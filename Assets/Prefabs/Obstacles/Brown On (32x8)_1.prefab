@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3470c16c1e76b943841d7ea51324053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationMaxDegrees: 30
+  rotationSpeed: 170
   playerLayer:
     serializedVersion: 2
     m_Bits: 1

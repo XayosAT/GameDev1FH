@@ -44096,6 +44096,10 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: -6928279778422173063, guid: 2139b590056593a4eb1e28f832f94729, type: 3}
+      propertyPath: rotationMaxDegrees
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 559846683119267958, guid: 2139b590056593a4eb1e28f832f94729, type: 3}
       propertyPath: m_LocalPosition.x
       value: 216.36
