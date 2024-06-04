@@ -19,10 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSizeJump;
     public float castDistance;
     public TeamColor teamColor;
-    
-    private float fireCooldown = 2f; // Cooldown duration in seconds
-    private float lastFireTime = 0f; // Time when the player last fired
-
 
     public GameObject bulletPrefab;
 
@@ -150,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
-        if (context.performed && Time.time >= lastFireTime + fireCooldown)
+        if (context.performed)
         {
             Vector2 spawnPosition = _isFacingRight ?
                 new Vector2(transform.position.x + 1f, transform.position.y) :
@@ -172,9 +168,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 bulletScript.Initialize(direction, teamColor);
             }
-
-            // Update the lastFireTime to the current time
-            lastFireTime = Time.time;
         }
     }
 
