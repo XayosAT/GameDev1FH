@@ -44,9 +44,10 @@ public class SawMover : MonoBehaviour
         {
             Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();
             PlayerMovement playerMovement = other.gameObject.GetComponent<PlayerMovement>();
-
+            GetComponent<Collider2D>().enabled = false;
             if (playerRb != null)
             {
+                playerMovement.TakeDamage(1f);
                 Vector2 knockbackDirection = (other.transform.position - transform.position).normalized;
                 playerRb.AddForce(new Vector2(knockbackDirection.x * sideForce, upForce), ForceMode2D.Impulse);
             
@@ -58,6 +59,8 @@ public class SawMover : MonoBehaviour
             {
                 Debug.LogError("Rigidbody2D component not found on Player");
             }
+            GetComponent<Collider2D>().enabled = true;
+
         }
     }
 }

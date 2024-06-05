@@ -6,7 +6,7 @@ public class TrunkBullet : MonoBehaviour
 {
     public float speed = 10f; // Speed of the bullet
     public float maxDistance = 20f; // Maximum distance the bullet can travel
-    public float force = 20;
+    public float force = 2;
     public float knockbackDuration = 1.5f;
 
     private Vector2 _startPosition;
@@ -39,7 +39,8 @@ public class TrunkBullet : MonoBehaviour
 
             if (playerRb != null)
             {
-                
+                playerMovement.TakeDamage(1.5f);
+                Destroy(gameObject);
                 playerRb.AddForce(new Vector2(-force, 5), ForceMode2D.Impulse);
                 
             
