@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5043394156871909184}
   - component: {fileID: -938386974105101087}
   - component: {fileID: 9073666997041255874}
+  - component: {fileID: 6769566168797881620}
   m_Layer: 6
   m_Name: Off
   m_TagString: HoriPlatform
@@ -173,3 +174,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   distance: 5
+--- !u!95 &6769566168797881620
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385418298354452493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96997facf27462c458372356c688c04c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
