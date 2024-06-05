@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class SawMover : MonoBehaviour
 {
-    public float pointA; // The first point (left)
-    public float pointB; // The second point (right)
+    public float distance = 5.0f; // Distance the saw will travel
     public float speed = 2.0f; // Speed of the saw
     
     public float upForce = 6f;
@@ -11,10 +10,12 @@ public class SawMover : MonoBehaviour
     public float knockbackDuration = 1f;
 
     private Vector2 _targetPosition;
+    private float _initialPositionX;
 
     void Start()
     {
-        _targetPosition = new Vector2(pointB, transform.position.y);
+        _initialPositionX = transform.position.x;
+        _targetPosition = new Vector2(_initialPositionX + distance, transform.position.y);
     }
 
     void Update()
@@ -27,13 +28,13 @@ public class SawMover : MonoBehaviour
         Vector2 newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
         transform.position = new Vector2(newPosition.x, transform.position.y);
 
-        if (Mathf.Approximately(transform.position.x, pointA))
+        if (Mathf.Approximately(transform.position.x, _initialPositionX))
         {
-            _targetPosition = new Vector2(pointB, transform.position.y);
+            _targetPosition = new Vector2(_initialPositionX + distance, transform.position.y);
         }
-        else if (Mathf.Approximately(transform.position.x, pointB))
+        else if (Mathf.Approximately(transform.position.x, _initialPositionX + distance))
         {
-            _targetPosition = new Vector2(pointA, transform.position.y);
+            _targetPosition = new Vector2(_initialPositionX, transform.position.y);
         }
     }
 

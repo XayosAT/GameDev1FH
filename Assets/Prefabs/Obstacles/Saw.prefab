@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9106631090010873636}
   - component: {fileID: 7244270384036050140}
-  - component: {fileID: 2686690597328529455}
   - component: {fileID: 3531032469709083322}
   - component: {fileID: 4761354194958849364}
+  - component: {fileID: 4837497690525313357}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2737819997895953672}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.23, y: 18.02, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
@@ -87,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2686690597328529455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737819997895953672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04aa6e4125fd0a4bab1c318e27cf1dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: 37.23
-  pointB: 43.97
-  speed: 5
-  upForce: 6
-  sideForce: 15
-  knockbackDuration: 1
 --- !u!58 &3531032469709083322
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,3 +149,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4837497690525313357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737819997895953672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04aa6e4125fd0a4bab1c318e27cf1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 7
+  speed: 3
+  upForce: 6
+  sideForce: 15
+  knockbackDuration: 1
