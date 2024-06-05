@@ -189,3 +189,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04aa6e4125fd0a4bab1c318e27cf1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 37.23, y: 18.02}
+  endPoint: {x: 43.6, y: 18.02}
+  speed: 3
+  upForce: 6
+  sideForce: 15
+  knockbackDuration: 1
