@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public Transform facingCheck;
     public LayerMask groundLayer;
+    private bool _isKnockedBack;
+    private Vector2 _aimDirection = Vector2.right;
 
     private float _horizontal;
     public float speed = 8f;
@@ -19,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 boxSizeJump;
     public float castDistance;
     public TeamColor teamColor;
+    
+    private float fireCooldown = 2f; // Cooldown duration in seconds
+    private float lastFireTime = 0f; // Time when the player last fired
+
 
     public GameObject bulletPrefab;
 
@@ -37,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateAimDirection();
         if (IsGrounded() && _horizontal == 0)
         {
             _playerAnim.SetBool("IsRunning", false);
@@ -60,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (_isKnockedBack) return; // Skip movement handling during knockback
+
         if (!IsFacingWall() || IsGrounded())
         {
             float movespeed = speed;
@@ -143,33 +152,60 @@ public class PlayerMovement : MonoBehaviour
             _playerAnim.SetBool("IsRunning", true);
         }
     }
-
+    
+    public void Aim(InputAction.CallbackContext context)
+    {
+        
+    }
+    
+    private void UpdateAimDirection()
+    {
+        if (_isFacingRight)
+        {
+            _aimDirection = Vector2.right;
+            
+        }
+        else
+        {
+            _aimDirection = Vector2.left;
+           
+        }
+    }
     public void Fire(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && Time.time >= lastFireTime + fireCooldown)
         {
-            Vector2 spawnPosition = _isFacingRight ?
-                new Vector2(transform.position.x + 1f, transform.position.y) :
-                new Vector2(transform.position.x - 1f, transform.position.y);
+            //Debug.Log("Firing with direction: " + _aimDirection);
+            Vector2 spawnPosition = (Vector2)transform.position + _aimDirection.normalized * 0.5f;
+            float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
+            
+            Quaternion spawnRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-            Quaternion spawnRot = Quaternion.identity;
-            if (_isFacingRight)
-            {
-                spawnRot = Quaternion.Euler(bulletPrefab.transform.eulerAngles + new Vector3(0, 0, 180));
-            }
-
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, spawnRot);
-
-            Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
+            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, spawnRotation);
+            
 
             Bullet bulletScript = bullet.GetComponent<Bullet>();
 
             if (bulletScript != null)
             {
-                bulletScript.Initialize(direction, teamColor);
+                bulletScript.Initialize(_aimDirection, teamColor);
             }
+
+            // Update the lastFireTime to the current time
+            lastFireTime = Time.time;
         }
     }
+    
+    public void SetKnockbackState(bool state)
+    {
+        _isKnockedBack = state;
+    }
+
+    private void ResetKnockbackState()
+    {
+        _isKnockedBack = false;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -255,4 +291,6 @@ public class PlayerMovement : MonoBehaviour
         _damaged = false;
         _playerAnim.SetBool("IsHit", false);
     }
+    
+    
 }
