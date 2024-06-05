@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2686690597328529455}
   - component: {fileID: 3531032469709083322}
   - component: {fileID: 4761354194958849364}
-  - component: {fileID: -5911623768861369266}
+  - component: {fileID: 4952649295830815071}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Untagged
@@ -100,8 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04aa6e4125fd0a4bab1c318e27cf1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: 37.23
-  pointB: 43.97
+  distance: 5
   speed: 5
   upForce: 6
   sideForce: 15
@@ -168,7 +167,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &-5911623768861369266
+--- !u!95 &4952649295830815071
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
