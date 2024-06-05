@@ -65,7 +65,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -153,6 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6993071252753764723, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
+    - {fileID: 3462886438100941216, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -216,6 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6993071252753764723, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
+    - {fileID: 3462886438100941216, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -279,6 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6993071252753764723, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
+    - {fileID: 3462886438100941216, guid: 9cd29dd714a517545b3813bce5b30795, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
