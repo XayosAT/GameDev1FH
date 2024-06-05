@@ -142,9 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 8582715274920972742, guid: f853af99fbd826f47a535649b7e044ef, type: 3}
-  startDirRight: 1
+  startDirRight: 0
   speed: 1
   distance: 20
+  _horizontal: -1
   SpawnCoinOnDeath: 0
 --- !u!95 &3732899324613904155
 Animator:
