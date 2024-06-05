@@ -8,11 +8,14 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rb;
     private TeamColor _teamColor;
     private Vector2 _direction;
+    private Vector2 _initialPosition;
+    public float maxDistance = 10f; // Maximum distance the bullet can travel
+    private float _distanceTraveled;
     
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _initialPosition = transform.position;
         _rb.velocity = _direction * speed;
     }
 
@@ -25,7 +28,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _distanceTraveled = Vector2.Distance(_initialPosition, transform.position);
+        if (_distanceTraveled >= maxDistance)
+        {
+            Destroy(gameObject); // Destroy the bullet after it has traveled the maximum distance
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -38,10 +45,6 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else
-        {
-            Debug.Log("Hit Something");
-            Destroy(gameObject);
-        }
+        
     }
 }
