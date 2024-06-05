@@ -5,16 +5,12 @@ public class SawMover : MonoBehaviour
     public float pointA; // The first point (left)
     public float pointB; // The second point (right)
     public float speed = 2.0f; // Speed of the saw
-    
-    public float upForce = 6f;
-    public float sideForce = 15f;
-    public float knockbackDuration = 1f;
 
-    private Vector2 _targetPosition;
+    private Vector2 targetPosition;
 
     void Start()
     {
-        _targetPosition = new Vector2(pointB, transform.position.y);
+        targetPosition = new Vector2(pointB, transform.position.y);
     }
 
     void Update()
@@ -24,49 +20,28 @@ public class SawMover : MonoBehaviour
 
     void MoveSaw()
     {
-        Vector2 newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
+        Vector2 newPosition = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         transform.position = new Vector2(newPosition.x, transform.position.y);
+        
+        if (transform.position.x == pointA)
+        {
+            targetPosition = new Vector2(pointB, transform.position.y);
+        }
+        else if (transform.position.x == pointB)
+        {
+            targetPosition = new Vector2(pointA, transform.position.y);
+        }
+        // Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        // transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
 
-        if (Mathf.Approximately(transform.position.x, pointA))
-        {
-            _targetPosition = new Vector2(pointB, transform.position.y);
-        }
-        else if (Mathf.Approximately(transform.position.x, pointB))
-        {
-            _targetPosition = new Vector2(pointA, transform.position.y);
-        }
+        // if (transform.position.x == pointA.position.x)
+        // {
+        //     targetPosition = pointB.position;
+        // }
+        // else if (transform.position.x == pointB.position.x)
+        // {
+        //     targetPosition = pointA.position;
+        // }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();
-            PlayerMovement playerMovement = other.gameObject.GetComponent<PlayerMovement>();
-            
-
-            if (playerRb != null)
-            {
-                if (transform.position.x > other.transform.position.x)
-                {
-                    playerRb.AddForce(new Vector2(-sideForce, upForce), ForceMode2D.Impulse);
-                }
-                else
-                {
-                    playerRb.AddForce(new Vector2(sideForce, upForce), ForceMode2D.Impulse);
-                }
-            
-                // Set knockback state
-                playerMovement.SetKnockbackState(true);
-                playerMovement.Invoke("ResetKnockbackState", knockbackDuration); // Adjust duration as needed
-            }
-            else
-            {
-                Debug.LogError("Rigidbody2D component not found on Player");
-            }
-        }
-    }
-
-    
 }
 

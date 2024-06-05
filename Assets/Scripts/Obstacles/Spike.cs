@@ -1,16 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spike : MonoBehaviour
+public class Spike : MonoBehaviour, IObstacle
 {
     // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D other)
+    public void InteractWithObstacle(GameObject player)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerMovement>().TakeDamage(2f);
-        }
+        Debug.Log("Player hit a spike");
     }
 }
