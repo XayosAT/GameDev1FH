@@ -126,7 +126,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1959143114193122990}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 29db8fafac6cee447a3beb7b10841dbf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   startDirRight: 1
   speed: 1
   distance: 15
+  _horizontal: -1
   SpawnCoinOnDeath: 0
 --- !u!114 &5202903356083099613
 MonoBehaviour:

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6219242168115473812}
   - component: {fileID: 3816469638169003753}
+  - component: {fileID: 3513362237756498674}
   m_Layer: 13
   m_Name: Spikes-2Blocks
   m_TagString: Untagged
@@ -86,6 +87,18 @@ PolygonCollider2D:
       - {x: 1.5533082, y: -0.40086478}
       - {x: 1.5527153, y: -0.2979589}
   m_UseDelaunayMesh: 0
+--- !u!114 &3513362237756498674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623406856664655850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c78bfaf168947449ceea31fa92aaeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5427368421026847039
 PrefabInstance:
   m_ObjectHideFlags: 0
