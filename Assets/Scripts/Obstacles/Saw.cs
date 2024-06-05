@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SawMover : MonoBehaviour
 {
-    public float distance = 5.0f; // Distance the saw will travel
+    public Vector2 startPoint; // The start point position
+    public Vector2 endPoint; // The end point position
     public float speed = 2.0f; // Speed of the saw
     
     public float upForce = 6f;
@@ -10,12 +11,11 @@ public class SawMover : MonoBehaviour
     public float knockbackDuration = 1f;
 
     private Vector2 _targetPosition;
-    private float _initialPositionX;
 
     void Start()
     {
-        _initialPositionX = transform.position.x;
-        _targetPosition = new Vector2(_initialPositionX + distance, transform.position.y);
+        transform.position = startPoint;
+        _targetPosition = endPoint;
     }
 
     void Update()
@@ -26,15 +26,15 @@ public class SawMover : MonoBehaviour
     void MoveSaw()
     {
         Vector2 newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
-        transform.position = new Vector2(newPosition.x, transform.position.y);
+        transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
 
-        if (Mathf.Approximately(transform.position.x, _initialPositionX))
+        if (Vector2.Distance(transform.position, startPoint) < 0.01f)
         {
-            _targetPosition = new Vector2(_initialPositionX + distance, transform.position.y);
+            _targetPosition = endPoint;
         }
-        else if (Mathf.Approximately(transform.position.x, _initialPositionX + distance))
+        else if (Vector2.Distance(transform.position, endPoint) < 0.01f)
         {
-            _targetPosition = new Vector2(_initialPositionX, transform.position.y);
+            _targetPosition = startPoint;
         }
     }
 
@@ -44,18 +44,11 @@ public class SawMover : MonoBehaviour
         {
             Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();
             PlayerMovement playerMovement = other.gameObject.GetComponent<PlayerMovement>();
-            
 
             if (playerRb != null)
             {
-                if (transform.position.x > other.transform.position.x)
-                {
-                    playerRb.AddForce(new Vector2(-sideForce, upForce), ForceMode2D.Impulse);
-                }
-                else
-                {
-                    playerRb.AddForce(new Vector2(sideForce, upForce), ForceMode2D.Impulse);
-                }
+                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized;
+                playerRb.AddForce(new Vector2(knockbackDirection.x * sideForce, upForce), ForceMode2D.Impulse);
             
                 // Set knockback state
                 playerMovement.SetKnockbackState(true);
@@ -67,7 +60,4 @@ public class SawMover : MonoBehaviour
             }
         }
     }
-
-    
 }
-
