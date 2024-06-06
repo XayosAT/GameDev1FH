@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -428,6 +428,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bfc5b4a7-89e7-49d3-8ec9-e2aed8639d50
     m_ActionName: PlayerController2/Jump
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b1c59f5-3477-418a-ba7e-feedc08e071e
+    m_ActionName: Player/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 764d869b-0157-42df-b549-b1b1d447035e
+    m_ActionName: Player2/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e13f0dbe-d6ae-4274-80f9-9c0a51feea53
+    m_ActionName: Player3/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e2bedf6a-cf9f-492f-a8ef-dcf680e158fb
+    m_ActionName: PlayerController/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4a25d600-3ae4-484b-95f4-b2c750c5f84a
+    m_ActionName: PlayerController2/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0051a182-5bc5-4f02-b0d6-f009448e1e6e
+    m_ActionName: SinglePlayer/Aim
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: SinglePlayer
