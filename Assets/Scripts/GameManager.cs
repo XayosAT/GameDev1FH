@@ -129,14 +129,16 @@ public class GameManager : MonoBehaviour
     private void ShowWinScreens()
     {
         _gameIsRunning = false;
-        if (isMultiplayer)
+        
+        GameObject.FindWithTag("Background").GetComponent<BackgroundMusicHandling>().StopMusic();
+        /*if (isMultiplayer)
         {
             GameObject.Find("P1 Cam - Main").GetComponent<BackgroundMusicHandling>().StopMusic();
         }
         else
         {
             GameObject.Find("Main Camera").GetComponent<BackgroundMusicHandling>().StopMusic();
-        }
+        }*/
         teamCoinsOverlay.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(true);
         winScreen.gameObject.GetComponent<AudioSource>().Play();

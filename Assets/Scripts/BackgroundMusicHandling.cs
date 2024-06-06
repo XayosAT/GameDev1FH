@@ -16,32 +16,25 @@ public class BackgroundMusicHandling : MonoBehaviour
 
     IEnumerator PlayAudioSources()
     {
+        AudioSource previousAudioSource = null;
         while (_playMusic)
         {
-            if (_audioSources[_currentAudioSourceIndex].isPlaying == false)
+            if (!previousAudioSource || !previousAudioSource.isPlaying)
             {
                 _audioSources[_currentAudioSourceIndex].Play();
-                yield return new WaitForSeconds(_audioSources[_currentAudioSourceIndex].clip.length);
+                previousAudioSource = _audioSources[_currentAudioSourceIndex];
                 _currentAudioSourceIndex = (_currentAudioSourceIndex + 1) % _audioSources.Length;
             }
-            else
-            {
-                yield return null;
-            }
+            yield return null;
         }
-
     }
 
     public void StopMusic()
     {
         _playMusic = false;
-        try
+        foreach (var audioSource in _audioSources)
         {
-            for (int i = 0; i < _audioSources.Length; i++)
-            {
-                _audioSources[0].Stop();
-            }
+            audioSource.Stop();
         }
-        catch (Exception) { }
     }
 }
