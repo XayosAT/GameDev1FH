@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1374126439}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2155,9 +2155,9 @@ RectTransform:
   - {fileID: 1372030308}
   m_Father: {fileID: 550422144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -49, y: -31}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -92}
   m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245372442
@@ -50603,6 +50603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VirtualGuy
       objectReference: {fileID: 0}
+    - target: {fileID: 1011558957112571087, guid: 377d3131a5132f14c8562150f53c58bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a73533611a2b03478241927b58e999a, type: 2}
     - target: {fileID: 4637241388136540145, guid: 377d3131a5132f14c8562150f53c58bc, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player
@@ -53117,7 +53121,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1982920473}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -91287,6 +91291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkMan
       objectReference: {fileID: 0}
+    - target: {fileID: 1011558957112571087, guid: 0fecbaa8049d3c44b9cd524cf6b9ab8a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f221d84269ae5e44bbc18b438b3bb7c3, type: 2}
     - target: {fileID: 4637241388136540145, guid: 0fecbaa8049d3c44b9cd524cf6b9ab8a, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player2
@@ -91867,7 +91875,7 @@ MonoBehaviour:
   m_Follow: {fileID: 729608717}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -93003,6 +93011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaskDude
       objectReference: {fileID: 0}
+    - target: {fileID: 1011558957112571087, guid: c82113c577fa6f245ba6a45dc4b5c854, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f221d84269ae5e44bbc18b438b3bb7c3, type: 2}
     - target: {fileID: 4637241388136540145, guid: c82113c577fa6f245ba6a45dc4b5c854, type: 3}
       propertyPath: m_DefaultActionMap
       value: PlayerController2
@@ -133048,6 +133060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NinjaFrog
       objectReference: {fileID: 0}
+    - target: {fileID: 1011558957112571087, guid: cd11d7cb90af70046b81bf307257fe69, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a73533611a2b03478241927b58e999a, type: 2}
     - target: {fileID: 4637241388136540145, guid: cd11d7cb90af70046b81bf307257fe69, type: 3}
       propertyPath: m_DefaultActionMap
       value: PlayerController
@@ -133927,7 +133943,7 @@ MonoBehaviour:
   m_Follow: {fileID: 725301728}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
